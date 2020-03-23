@@ -1,0 +1,15 @@
+{
+  "name": "pageflip",
+  "version": "1.0.0",
+  "description": "flip html pages by calling browser",
+  "main": "pageflip.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "iohook": "^0.6.5",
+    "opener": "^1.5.1"
+  }
+}
