@@ -16,8 +16,6 @@ var opener = require('opener');
 var actPage=1;
 var minPage=1;
 var maxPage=20;
-var loadInterval = setInterval(autoPageFlips, 1000); // automatically flip page after 1 second 
-setTimeout(endPageFlips, 5000);  // stop automatic flips after 5 seconds 
 
 function loadPage() { // function to load a page in browser (starts default browser if not running)
     var filename='./shifz/';
@@ -28,38 +26,35 @@ function loadPage() { // function to load a page in browser (starts default brow
     opener(filename) // opens the url/file in the default browser 
 }
 
-function autoPageFlips() { 
-    actPage++; 
-    if (actPage > maxPage) actPage=minPage;
-    loadPage();
-}
-
-function endPageFlips() {  
-  console.log("end autoamtic page flips!");  
-  clearInterval(loadInterval);  // stop intervals
-
-}
-
-
-
 ioHook.on("keydown", event => {
-  // console.log(event);
+  console.log(event);
   // result: {keychar: 'f', keycode: 19, rawcode: 15, type: 'keypress'}
-  if (event.rawcode == 39) {
-    console.log("cursor right!");
+
+  if (event.keycode == 32) {
+    console.log("key d: right!");
     actPage++;
     if (actPage > maxPage) actPage=minPage;
     loadPage();
   }
-  if (event.rawcode == 37) { 
-    console.log("cursor left!");
+
+  if (event.keycode == 30) {
+    console.log("key a: left!");
     actPage--;
     if (actPage < minPage) actPage=maxPage;
     loadPage();
   }
-  if (event.rawcode == 38) console.log("cursor up!");
-  if (event.rawcode == 40) console.log("cursor down!");
+  if (event.keycode == 17) console.log("key w: enter (currently not supported, TBD)");
+  if (event.keycode == 31) console.log("key s: exit (currently not supported, TBD)");
+  if (event.keycode == 57) console.log("key space: play (currently not supported, TBD)");
 });
 
 //Register and stark hook 
+
 ioHook.start();
+console.log("---- WELCOME ------");
+console.log("This is the pageflip demo");
+console.log("Install firefox browser (iceweasel on RaspberryPi)");
+console.log("Use fullscreen and load pages in the same tab (about:config newwindow=1)");
+console.log("Press keys A,D,W,S and <Space>");
+console.log(" ");
+loadPage()
