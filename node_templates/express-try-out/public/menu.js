@@ -18,4 +18,12 @@ websocketMediaControl.addEventListener("message", (ws) =>{
 websocketMediaControl.addEventListener("open", (ws) =>{
         console.log(ws)
         websocketMediaControl.send("Media Control is ready!")
+
+        var video = document.getElementsByTagName("video")
+        if(video.length > 0){
+            websocketMediaControl.send("Side has a video!")
+        }else{
+            websocketMediaControl.send("Side has no video!")
+        }
+
 })

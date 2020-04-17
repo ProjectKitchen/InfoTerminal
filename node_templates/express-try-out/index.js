@@ -76,6 +76,7 @@ function pageChangeExit() {
     }
 }
 
+const ioHook = require("iohook")
 ioHook.on("keydown", hook);
 ioHook.start();
 function hook(event) {
@@ -91,5 +92,4 @@ function hook(event) {
   if (event.keycode == 31) {
     pageChangeExit()
   }
-  console.log(key)
 };
