@@ -1,4 +1,4 @@
-window.onload = (event) => {
+document.addEventListener("DOMContentLoaded", function(event) {
 
     var websocketReloading = new WebSocket('ws://' + location.hostname + ':' + location.port + '/reload');
     var load = false;
@@ -32,7 +32,7 @@ window.onload = (event) => {
             websocketMediaControl.send("Side has no video!")
         }
     })
-}
+})
 
 function getSound(src) {
     var sound = document.createElement("audio");
