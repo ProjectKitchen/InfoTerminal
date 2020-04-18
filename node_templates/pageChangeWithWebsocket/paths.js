@@ -10,13 +10,15 @@ class Site {
 
 // analyses folder and returns Site objects with their path and 
 //subsites if a folder with the same name as the file is avaliable
-exports.getSubFiles = function(startpath) {
+exports.getSubFiles = function (startpath) {
     var resultarray = []
     var files = []
     var directory = []
     fs.readdirSync(startpath, { withFileTypes: true }).forEach(element => {
         if (element.isFile()) {
-            files.push(element)
+            if (path.extname(element.name) == ".html") {
+                files.push(element)
+            }
         }
         if (element.isDirectory()) {
             directory.push(element)
@@ -33,5 +35,3 @@ exports.getSubFiles = function(startpath) {
     })
     return resultarray
 }
-
-
