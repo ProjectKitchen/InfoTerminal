@@ -1,0 +1,31 @@
+body{
+	background-color:#000000
+	}
+.bild{
+	position:absolute;
+	top:20;
+	left:23;
+	border:0px;
+	z-index:1
+	}
+.text{
+	position:absolute;
+	top:505;
+	left:600;
+	color:#da906c;
+	font-size:18px;
+	font-family:arial;
+	z-index:1
+	}
+.anim{
+	position:absolute;
+	top:440;
+	left:100;
+	border:0px;
+	z-index:2
+	}
+	
+.startvideo{
+	z-index:5;
+	position:absolute;
+}

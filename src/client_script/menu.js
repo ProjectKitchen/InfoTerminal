@@ -1,9 +1,7 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
 
     var websocketReloading = new WebSocket('ws://' + location.hostname + ':' + location.port + '/reload');
     var load = false;
-    var websocketMediaControl = websocketMediaControl = new WebSocket('ws://' + location.hostname + ':' + location.port + '/media');
-    var media = false;
 
     websocketReloading.addEventListener("message", (ws) => {
         if (load == false) {
@@ -14,22 +12,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
             location.replace(location.origin + "/" + newfile)
         }
     })
+
+    var websocketMediaControl = websocketMediaControl = new WebSocket('ws://' + location.hostname + ':' + location.port + '/media');
+    var media = false;
+    var mediaplaying = false;
+
     websocketMediaControl.addEventListener("message", (ws) => {
-        if (media == false) {
-            media = true
-            console.log(ws)
+        var video = document.getElementsByTagName("video")
+        if (mediaplaying == true) {
+            video[0].pause()
+            mediaplaying = false
+        } else {
+            video[0].play()
+            mediaplaying = true
         }
     })
     websocketMediaControl.addEventListener("open", (ws) => {
-        console.log(ws)
-        websocketMediaControl.send("Media Control is ready!")
-
-        var video = document.getElementsByTagName("video")
-        if (video.length > 0) {
-            websocketMediaControl.send("Side has a video!")
+        var videoopen = document.getElementsByTagName("video")
+        if (videoopen.length > 0) {
+            websocketMediaControl.send(true)
         }
         else {
-            websocketMediaControl.send("Side has no video!")
+            websocketMediaControl.send(false)
         }
     })
 })

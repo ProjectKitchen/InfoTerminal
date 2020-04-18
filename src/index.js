@@ -12,6 +12,7 @@ var pagehistoryindex = []
 app.use('/', express.static('../webpages'));
 app.use('/', express.static('./client_script'));
 app.use('/audio', express.static('../audio'));
+app.use('/video', express.static('../video'));
 
 var reloading = true;
 var websocketReload;
@@ -23,18 +24,34 @@ app.ws('/reload', function (ws, req) {
     ws.on("close", (err, connection) => { reloading = true; })
 });
 
+var hasmedia = false;
+var isplaying = false;
 var mediainput = true;
 app.ws('/media', function (ws, req) {
     websocketMediaControl = ws;
     mediainput = false;
-    ws.on("close", (err, connection) => { mediainput = true; })
-    ws.on("message",(message) => { console.log("Media message: " + message)})
-    ws.send("mediancontrol ready")
+    ws.on("close", (err, connection) => { mediainput = true; hasmedia = false })
+
+    ws.on("message", (message) => {
+        hasmedia = message;
+    })
 });
 
 app.listen(8080, function () {
     console.log('App listening on port 8080!');
 });
+
+function playMedia() {
+    if (hasmedia) {
+        if (isplaying == false) {
+            websocketMediaControl.send("do")
+            isplaying = true
+        } else {
+            websocketMediaControl.send("do")
+            isplaying = false
+        }
+    }
+}
 
 function pageChangeForward() {
     if (reloading == false) {
@@ -83,20 +100,29 @@ function pageChangeExit() {
     }
 }
 
+function goSleepMode() {
+    if (reloading == false) {
+        websocketReload.send("start.html")
+    }
+}
+
 const ioHook = require("iohook")
 ioHook.on("keydown", hook);
 ioHook.start();
 function hook(event) {
     if (event.keycode == 30) {
-    pageChangeForward()
-  }
-  if (event.keycode == 32) {
-    pageChangeBackwards()
-  }
-  if (event.keycode == 17) {
-    pageChangeEnter()
-  }
-  if (event.keycode == 31) {
-    pageChangeExit()
-  }
-};
+        pageChangeForward()
+    }
+    if (event.keycode == 32) {
+        pageChangeBackwards()
+    }
+    if (event.keycode == 17) {
+        pageChangeEnter()
+    }
+    if (event.keycode == 31) {
+        pageChangeExit()
+    }
+    if (event.keycode == 25) {
+        playMedia()
+    }
+}

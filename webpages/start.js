@@ -1,3 +1,8 @@
+
+function start(){
+	location.replace(location.origin + "/websites/01_robox.html")
+}
+
 const websocketReloading = new WebSocket('ws://' + location.hostname + ':' + location.port + '/reload');
 var load = false;
 websocketReloading.addEventListener("message", (ws) =>{
@@ -25,6 +30,5 @@ websocketMediaControl.addEventListener("open", (ws) =>{
         }else{
             websocketMediaControl.send("Side has no video!")
         }
-
 })
 
