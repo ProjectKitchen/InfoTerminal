@@ -6,10 +6,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
     websocketReloading.addEventListener("message", (ws) => {
         if (load == false) {
             load = true
-            var sound = getSound(location.origin + "/audio/" + "next.wav")
+            var newfile = ws.data.substring(1)
+            var soundpath = ""
+            switch (ws.data.charAt(0)) {
+                case 'f':
+                    soundpath = "next.wav"
+                    break;
+                case 'b':
+                    soundpath = "prev.wav"
+                    break;
+                case 'e':
+                    soundpath = "enter.wav"
+                    break;
+                case 'x':
+                    soundpath = "exit.wav"
+                    break;
+            }
+            var sound = getSound(location.origin + "/audio/" + soundpath)
             sound.play()
-            var newfile = ws.data
-            location.replace(location.origin + "/" + newfile)
+            sound.onended = function () {
+                location.replace(location.origin + "/" + newfile)
+            }
         }
     })
 

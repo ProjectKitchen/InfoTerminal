@@ -18,6 +18,7 @@ websocketMediaControl.addEventListener("message", (ws) =>{
     if (media == false) {
         media = true
         console.log(ws)
+        
     }
 })
 websocketMediaControl.addEventListener("open", (ws) =>{

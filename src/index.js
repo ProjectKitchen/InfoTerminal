@@ -1,10 +1,10 @@
-var filesystem = require('./paths.js')
 var express = require('express');
 var app = express();
 var ws = require('express-ws')(app);
+var pagesystem = require('./paths.js')
 
 var currentPageIndex = 0;
-var rootpages = filesystem.getSubFiles("../webpages/websites", "./websites")
+var rootpages = pagesystem.parseJson("./sitespaths.json")
 var currentpages = rootpages
 var pagehistory = []
 var pagehistoryindex = []
@@ -55,22 +55,23 @@ function playMedia() {
 
 function pageChangeForward() {
     if (reloading == false) {
-        currentPageIndex--;
-        if (currentPageIndex < 0) {
-            currentPageIndex = currentpages.length - 1;
-        }
-        websocketReload.send(currentpages[currentPageIndex].path)
         reloading = true
+        currentPageIndex++;
+        if (currentPageIndex >= currentpages.length) {
+            currentPageIndex = 0;
+        }
+        websocketReload.send('f' +currentpages[currentPageIndex].path)
     }
 }
 
 function pageChangeBackwards() {
     if (reloading == false) {
-        currentPageIndex++;
-        if (currentPageIndex >= currentpages.length) {
-            currentPageIndex = 0;
+        reloading = true
+        currentPageIndex--;
+        if (currentPageIndex < 0) {
+            currentPageIndex = currentpages.length - 1;
         }
-        websocketReload.send(currentpages[currentPageIndex].path)
+        websocketReload.send('b' +currentpages[currentPageIndex].path)
         reloading = true
     }
 }
@@ -79,12 +80,13 @@ function pageChangeBackwards() {
 function pageChangeEnter() {
     if (reloading == false) {
         if (currentpages[currentPageIndex].subsites.length > 0) {
+            reloading = true
             pagehistory.push(currentpages)
             pagehistoryindex.push(currentPageIndex)
             currentpages = currentpages[currentPageIndex].subsites
             currentPageIndex = 0
-            websocketReload.send(currentpages[currentPageIndex].path)
-            reloading = true
+            websocketReload.send('e' + currentpages[currentPageIndex].path)
+            
         }
     }
 }
@@ -92,17 +94,18 @@ function pageChangeEnter() {
 function pageChangeExit() {
     if (reloading == false) {
         if (pagehistory.length > 0) {
+            reloading = true
             currentpages = pagehistory.pop()
             currentPageIndex = pagehistoryindex.pop()
-            websocketReload.send(currentpages[currentPageIndex].path)
-            reloading = true
+            websocketReload.send('x' + currentpages[currentPageIndex].path)
         }
     }
 }
 
 function goSleepMode() {
     if (reloading == false) {
-        websocketReload.send("start.html")
+        reloading = true
+        websocketReload.send('x'+"start.html")
     }
 }
 
@@ -110,19 +113,19 @@ const ioHook = require("iohook")
 ioHook.on("keydown", hook);
 ioHook.start();
 function hook(event) {
-    if (event.keycode == 30) {
+    if (event.keycode == 32) { // d
         pageChangeForward()
     }
-    if (event.keycode == 32) {
+    if (event.keycode == 30) { // a
         pageChangeBackwards()
     }
-    if (event.keycode == 17) {
+    if (event.keycode == 17) { // w
         pageChangeEnter()
     }
-    if (event.keycode == 31) {
+    if (event.keycode == 31) { // s
         pageChangeExit()
     }
-    if (event.keycode == 25) {
+    if (event.keycode == 25) { // p
         playMedia()
     }
 }
