@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import board
 
 # GPIO-Bezeichnung BCM stezen
 GPIO.setmode(GPIO.BCM)
@@ -41,7 +42,7 @@ GPIO.add_event_detect(input_b,GPIO.BOTH,callback=update)
 # Main Program starts here: polling loop
 old_position=0;
 while True:
-  time.sleep(0.5);
+  time.sleep(0.2);
   speed=(position-old_position)/4;
   print (speed);
   old_position=position;
