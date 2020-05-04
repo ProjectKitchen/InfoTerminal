@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     })
 
     var websocketMediaControl = websocketMediaControl = new WebSocket('ws://' + location.hostname + ':' + location.port + '/media');
-    var media = false;
     var mediaplaying = false;
 
     websocketMediaControl.addEventListener("message", (ws) => {
@@ -45,8 +44,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
     })
     websocketMediaControl.addEventListener("open", (ws) => {
-        var videoopen = document.getElementsByTagName("video")
-        if (videoopen.length > 0) {
+        var videoTag = document.getElementsByTagName("video")
+        if (videoTag.length > 0) {
             websocketMediaControl.send(true)
         }
         else {
@@ -64,4 +63,4 @@ function getSound(src) {
     sound.style.display = "none";
     document.body.appendChild(sound);
     return sound;
-} 
+}

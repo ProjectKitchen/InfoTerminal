@@ -18,9 +18,24 @@ var reloading = true;
 var websocketReload;
 var websocketMediaControl;
 
+// 10 min is 600000 ms
+var timer = undefined
+var sleepModeTime = 600000
+
 app.ws('/reload', function (ws, req) {
     websocketReload = ws;
+    let subsites = false
+    let parentSides=false
+    if (pagehistory.length > 0) {
+        parentSides = true
+    }
+    if (currentpages[currentPageIndex].subsites.length > 0) {
+        subsites = true
+    }
+    hasSubsites(subsites)
+    hasParentSide(parentSides)
     reloading = false;
+    if(timer == undefined){ timer = setTimeout(function(){ goSleepMode() },  sleepModeTime) }
     ws.on("close", (err, connection) => { reloading = true; })
 });
 
@@ -31,9 +46,9 @@ app.ws('/media', function (ws, req) {
     websocketMediaControl = ws;
     mediainput = false;
     ws.on("close", (err, connection) => { mediainput = true; hasmedia = false })
-
     ws.on("message", (message) => {
         hasmedia = message;
+        hasMedia(hasmedia)
     })
 });
 
@@ -42,7 +57,7 @@ app.listen(8080, function () {
 });
 
 function playMedia() {
-    if (hasmedia) {
+    if (hasmedia == true) {
         if (isplaying == false) {
             websocketMediaControl.send("do")
             isplaying = true
@@ -56,6 +71,7 @@ function playMedia() {
 function pageChangeForward() {
     if (reloading == false) {
         reloading = true
+        timer.refresh()
         currentPageIndex++;
         if (currentPageIndex >= currentpages.length) {
             currentPageIndex = 0;
@@ -67,20 +83,20 @@ function pageChangeForward() {
 function pageChangeBackwards() {
     if (reloading == false) {
         reloading = true
+        timer.refresh()
         currentPageIndex--;
         if (currentPageIndex < 0) {
             currentPageIndex = currentpages.length - 1;
         }
         websocketReload.send('b' +currentpages[currentPageIndex].path)
-        reloading = true
     }
 }
-
 
 function pageChangeEnter() {
     if (reloading == false) {
         if (currentpages[currentPageIndex].subsites.length > 0) {
             reloading = true
+            timer.refresh()
             pagehistory.push(currentpages)
             pagehistoryindex.push(currentPageIndex)
             currentpages = currentpages[currentPageIndex].subsites
@@ -95,6 +111,7 @@ function pageChangeExit() {
     if (reloading == false) {
         if (pagehistory.length > 0) {
             reloading = true
+            timer.refresh()
             currentpages = pagehistory.pop()
             currentPageIndex = pagehistoryindex.pop()
             websocketReload.send('x' + currentpages[currentPageIndex].path)
@@ -102,10 +119,34 @@ function pageChangeExit() {
     }
 }
 
+function hasSubsites(status){
+    if(status == true){
+        console.log("enter button on")
+    }else{
+        console.log("enter button off")
+    }
+}
+
+function hasParentSide(status){
+    if(status == true){
+        console.log("exit button on")
+    }else{
+        console.log("exit button off")
+    }
+}
+
+function hasMedia(status){
+    if(status == true){
+        console.log("media button on")
+    }else{
+        console.log("media button off")
+    }
+}
+
 function goSleepMode() {
     if (reloading == false) {
         reloading = true
-        websocketReload.send('x'+"start.html")
+        websocketReload.send('x'+"/")
     }
 }
 
