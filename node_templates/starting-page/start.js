@@ -43,7 +43,7 @@ postLoad.style.opacity = 1;
   setTimeout(function() {
     document.body.removeChild(vid);
   }, 20);
-}, false);
+}, true);
 
 
 
@@ -55,7 +55,7 @@ function start(){
 // time out function, which loads the idle animation
 
 attachEvent(window,'load',function(){
-  var idleSeconds = 30;
+  var idleSeconds = 15;
   var idleTimer;
   function resetTimer(){
     clearTimeout(idleTimer);
@@ -69,10 +69,24 @@ attachEvent(window,'load',function(){
 });
 
 function whenUserIdle(){
-  //...
+  // When the system is in the idle mode, the exit animation will be played and then the walking bull animation will be looped.
+  //This is just a proof of concept.
 
   postLoad.style.opacity = 0;
-  alert("I am trying (ツ) ");
+
+  var vid2 = document.createElement('video');
+
+  vid2.classList.add('playing');
+
+  vid2.src = '../video/0-1.m4v';
+
+  vid2.load();
+
+  document.body.appendChild(vid2);
+
+  vid2.play();
+
+  vid2.loop = true;
 
 }
 
