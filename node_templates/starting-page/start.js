@@ -4,7 +4,7 @@ var vid = document.createElement('video');
 
 vid.classList.add('playing');
 
-vid.src = '../video/start.m4v';
+vid.src = '../../video/start.m4v';
 
 vid.load();
 
@@ -64,7 +64,7 @@ function whenUserIdle(){
 
   vid2.classList.add('playing');
 
-  vid2.src = '../video/0-3.m4v';
+  vid2.src = '../../video/0-3.m4v';
 
   vid2.load();
 
@@ -92,7 +92,7 @@ function whenUserIdle(){
 
   vid3.classList.add('playing');
 
-  vid3.src = '../video/0-1.m4v';
+  vid3.src = '../../video/0-1.m4v';
 
   vid3.load();
 
