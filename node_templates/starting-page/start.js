@@ -1,45 +1,30 @@
 
-// Create and reference video element
+// adding the video element to the DOM, to play the starting animation
 var vid = document.createElement('video');
 
-// Add class for styling
 vid.classList.add('playing');
 
-// Add a src to .vid
-vid.src = '../video/IntroWithSound.m4v';
+vid.src = '../video/start.m4v';
 
-// Load .vid
 vid.load();
 
-// Add .vid to body
 document.body.appendChild(vid);
 
-// Play video
 vid.play();
 
-/* Register ended event to vid
-|| After video has ended...
-*/
 vid.addEventListener('ended', function(e) {
 
 
 let postLoad = document.querySelector("#postLoad");
 postLoad.style.opacity = 1;
 
-  // Pause vid
+
   vid.pause()
 
-  /* Reset time played. This method used
-  || along with .pause() is equivelant to "stop"
-  */
   vid.currentTime = 0;
 
-  // Simulate a `non-playing state`
   vid.classList.remove('playing');
 
-  /* Delay the call to remove vid in order
-  || to preserve the fade out effect.
-  */
   setTimeout(function() {
     document.body.removeChild(vid);
   }, 20);
@@ -52,7 +37,7 @@ function start(){
 }
 
 
-// time out function, which loads the idle animation
+// time out function, which checks for user activity
 
 attachEvent(window,'load',function(){
   var idleSeconds = 15;
@@ -70,7 +55,8 @@ attachEvent(window,'load',function(){
 
 function whenUserIdle(){
   // When the system is in the idle mode, the exit animation will be played and then the walking bull animation will be looped.
-  //This is just a proof of concept.
+
+// loading the exit animation
 
   postLoad.style.opacity = 0;
 
@@ -78,7 +64,7 @@ function whenUserIdle(){
 
   vid2.classList.add('playing');
 
-  vid2.src = '../video/0-1.m4v';
+  vid2.src = '../video/0-3.m4v';
 
   vid2.load();
 
@@ -86,7 +72,35 @@ function whenUserIdle(){
 
   vid2.play();
 
-  vid2.loop = true;
+  // removing the vid2 from the DOM after it had played
+    vid2.addEventListener('ended', function(e) {
+
+      vid2.pause()
+
+      vid2.currentTime = 0;
+
+      vid2.classList.remove('playing');
+
+      setTimeout(function() {
+        document.body.removeChild(vid2);
+      }, 20);
+    }, true);
+
+  // looping the idle animation
+
+  var vid3 = document.createElement('video');
+
+  vid3.classList.add('playing');
+
+  vid3.src = '../video/0-1.m4v';
+
+  vid3.load();
+
+  document.body.appendChild(vid3);
+
+  vid3.play();
+
+  vid3.loop = true;
 
 }
 
