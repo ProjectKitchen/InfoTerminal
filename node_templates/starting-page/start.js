@@ -25,6 +25,7 @@ vid.addEventListener('ended', function(e) {
 
 let postLoad = document.querySelector("#postLoad");
 postLoad.style.opacity = 1;
+
   // Pause vid
   vid.pause()
 
@@ -48,4 +49,38 @@ postLoad.style.opacity = 1;
 
 function start(){
 	location.replace(location.origin + "/websites/01_robox.html")
+}
+
+
+// time out function, which loads the idle animation
+
+attachEvent(window,'load',function(){
+  var idleSeconds = 30;
+  var idleTimer;
+  function resetTimer(){
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(whenUserIdle,idleSeconds*1000);
+  }
+  attachEvent(document.body,'mousemove',resetTimer);
+  attachEvent(document.body,'keydown',resetTimer);
+  attachEvent(document.body,'click',resetTimer);
+
+  resetTimer(); // Start the timer when the page loads
+});
+
+function whenUserIdle(){
+  //...
+
+  postLoad.style.opacity = 0;
+  alert("I am trying (ツ) ");
+
+}
+
+function attachEvent(obj,evt,fnc,useCapture){
+  if (obj.addEventListener){
+    obj.addEventListener(evt,fnc,!!useCapture);
+    return true;
+  } else if (obj.attachEvent){
+    return obj.attachEvent("on"+evt,fnc);
+  }
 }
