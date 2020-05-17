@@ -1,5 +1,6 @@
 
-function start(){
+function changeToNormal(){
+  websocketStartup.send("start")
 	location.replace(location.origin + "/websites/01_robox.html")
 }
 
@@ -35,14 +36,8 @@ postLoad.style.opacity = 1;
 }, true);
 
 
-
-function start(){
-	location.replace(location.origin + "/websites/01_robox.html")
-}
-
-
 // time out function, which checks for user activity
-
+/*
 attachEvent(window,'load',function(){
   var idleSeconds = 15;
   var idleTimer;
@@ -57,38 +52,7 @@ attachEvent(window,'load',function(){
   resetTimer(); // Start the timer when the page loads
 });
 
-function whenUserIdle(){
-  // When the system is in the idle mode, the exit animation will be played and then the walking bull animation will be looped.
 
-// loading the exit animation
-
-  postLoad.style.opacity = 0;
-
-  var vid2 = document.createElement('video');
-
-  vid2.classList.add('playing');
-
-  vid2.src = '../../video/0-3.m4v';
-
-  vid2.load();
-
-  document.body.appendChild(vid2);
-
-  vid2.play();
-
-  // removing the vid2 from the DOM after it had played
-    vid2.addEventListener('ended', function(e) {
-
-      vid2.pause()
-
-      vid2.currentTime = 0;
-
-      vid2.classList.remove('playing');
-
-      setTimeout(function() {
-        document.body.removeChild(vid2);
-      }, 20);
-    }, true);
 
   // looping the idle animation
 
@@ -96,7 +60,7 @@ function whenUserIdle(){
 
   vid3.classList.add('playing');
 
-  vid3.src = '../../video/0-1.m4v';
+  vid3.src = '/video/0-1.m4v';
 
   vid3.load();
 
@@ -116,3 +80,22 @@ function attachEvent(obj,evt,fnc,useCapture){
     return obj.attachEvent("on"+evt,fnc);
   }
 }
+*/
+
+document.addEventListener("DOMContentLoaded", function (event) {
+  var startvideo = document.getElementById("startvideo");
+  startvideo.mozPreservesPitch = false;
+  startvideo.loop=true;
+  startvideo.volume=0.0;
+  var websocketStartup = new WebSocket('ws://' + location.hostname + ':' + location.port + '/startup');
+
+  websocketStartup.addEventListener("message", handleIncomingMessage)
+
+  function handleIncomingMessage (ws) {
+      console.log(ws.data)
+      var rate = ws.data
+      startvideo.playbackrate = rate
+      
+      startvideo.play(); 
+  }
+})

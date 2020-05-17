@@ -19,11 +19,16 @@ var websocketReload;
 var websocketMediaControl;
 
 // 10 min is 600000 ms
+// 5 s in 600000 ms
 var timer = undefined
 var sleepModeTime = 600000
 
 app.ws('/reload', function (ws, req) {
     websocketReload = ws;
+    if(idle == true){
+        reloading = false;
+        websocketReload.send("s/");
+    }
     let subsites = false
     let parentSides=false
     if (pagehistory.length > 0) {
@@ -39,6 +44,7 @@ app.ws('/reload', function (ws, req) {
     ws.on("close", (err, connection) => { reloading = true; })
 });
 
+
 var hasmedia = false;
 var isplaying = false;
 var mediainput = true;
@@ -53,6 +59,22 @@ app.ws('/media', function (ws, req) {
         mediaButtonStatus(status)
     })
 });
+
+var websocketStartup
+app.ws('/startup', function (ws, req) {
+    websocketStartup = ws;
+    ws.on("close", (err, connection) => {  })
+   
+    ws.on("message", (message) => {
+      if(message == "start"){
+          idle = false
+      }
+    })
+});
+
+function handleCordInput(data){
+    websocketStartup.send(data)
+}
 
 var port = 8080
 app.listen(port, function () {
@@ -146,10 +168,12 @@ function mediaButtonStatus(status){
     }
 }
 
+var idle = false
 function goSleepMode() {
     if (reloading == false) {
         reloading = true
-        websocketReload.send('x'+"/")
+        websocketReload.send('x'+"/websites/01_robox.html")
+        idle=true
     }
 }
 
