@@ -45,7 +45,7 @@ function getSubFiles (startpath, pathToAdd)  {
         })
         resultarray.push(site)
     })
-   resultarray.sort((siteA,siteB) => { 
+   resultarray.sort((siteA, siteB) => { 
         if(siteA.path < siteB.path) { return -1; }
         if(siteA.path > siteB.path) { return 1; }
         return 0;

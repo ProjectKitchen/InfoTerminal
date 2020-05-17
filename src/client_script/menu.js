@@ -37,8 +37,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var video = document.getElementsByTagName("video")
         if (mediaplaying == true) {
             video[0].pause()
+            video[0].style.removeProperty("position")
+            video[0].style.setProperty("z-index","-1")
             mediaplaying = false
         } else {
+            video[0].style.setProperty("position","absolute")
+            video[0].style.setProperty("z-index","999")
             video[0].play()
             mediaplaying = true
         }

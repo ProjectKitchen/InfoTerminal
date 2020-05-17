@@ -32,8 +32,8 @@ app.ws('/reload', function (ws, req) {
     if (currentpages[currentPageIndex].subsites.length > 0) {
         subsites = true
     }
-    hasSubsites(subsites)
-    hasParentSide(parentSides)
+    enterButtonStatus(subsites)
+    exitButtonStatus(parentSides)
     reloading = false;
     if(timer == undefined){ timer = setTimeout(function(){ goSleepMode() },  sleepModeTime) }
     ws.on("close", (err, connection) => { reloading = true; })
@@ -47,13 +47,16 @@ app.ws('/media', function (ws, req) {
     mediainput = false;
     ws.on("close", (err, connection) => { mediainput = true; hasmedia = false })
     ws.on("message", (message) => {
-        hasmedia = message;
-        hasMedia(hasmedia)
+        let status = false
+        if(message == "true"){  status = true   }
+        hasmedia = status;
+        mediaButtonStatus(status)
     })
 });
 
-app.listen(8080, function () {
-    console.log('App listening on port 8080!');
+var port = 8080
+app.listen(port, function () {
+    console.log('App listening on port ' + port +'!');
 });
 
 function playMedia() {
@@ -119,24 +122,24 @@ function pageChangeExit() {
     }
 }
 
-function hasSubsites(status){
-    if(status == true){
+function enterButtonStatus(status){
+    if(status === true){
         console.log("enter button on")
     }else{
         console.log("enter button off")
     }
 }
 
-function hasParentSide(status){
-    if(status == true){
+function exitButtonStatus(status){
+    if(status === true){
         console.log("exit button on")
     }else{
         console.log("exit button off")
     }
 }
 
-function hasMedia(status){
-    if(status == true){
+function mediaButtonStatus(status){
+    if(status === true){
         console.log("media button on")
     }else{
         console.log("media button off")
