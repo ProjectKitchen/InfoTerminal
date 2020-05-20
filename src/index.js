@@ -14,9 +14,11 @@ app.use('/', express.static('./client_script'));
 app.use('/audio', express.static('../audio'));
 app.use('/video', express.static('../video'));
 
-var reloading = true;
-var websocketReload;
-var websocketMediaControl;
+var idlemode = true
+var websocketStartup = undefined
+var reloading = true
+var websocketReload
+var websocketMediaControl
 
 // 10 min is 600000 ms
 // 5 s in 600000 ms
@@ -25,9 +27,9 @@ var sleepModeTime = 600000
 
 app.ws('/reload', function (ws, req) {
     websocketReload = ws;
-    if(idle == true){
-        reloading = false;
-        websocketReload.send("s/");
+    if(idlemode == true){
+        reloading = true;
+        websocketReload.send("s/")
     }
     let subsites = false
     let parentSides=false
@@ -39,7 +41,7 @@ app.ws('/reload', function (ws, req) {
     }
     enterButtonStatus(subsites)
     exitButtonStatus(parentSides)
-    reloading = false;
+    reloading = false
     if(timer == undefined){ timer = setTimeout(function(){ goSleepMode() },  sleepModeTime) }
     ws.on("close", (err, connection) => { reloading = true; })
 });
@@ -60,20 +62,20 @@ app.ws('/media', function (ws, req) {
     })
 });
 
-var websocketStartup
 app.ws('/startup', function (ws, req) {
     websocketStartup = ws;
-    ws.on("close", (err, connection) => {  })
-   
+    ws.on("close", (err, connection) => { websocketStartup = undefined })
     ws.on("message", (message) => {
       if(message == "start"){
-          idle = false
+        idlemode = false
       }
     })
 });
 
 function handleCordInput(data){
+    if(websocketStartup != undefined){
     websocketStartup.send(data)
+    }
 }
 
 var port = 8080
@@ -168,15 +170,45 @@ function mediaButtonStatus(status){
     }
 }
 
-var idle = false
 function goSleepMode() {
     if (reloading == false) {
         reloading = true
+        clearTimeout(timer)
+        timer = undefined
+        idlemode=true
         websocketReload.send('x'+"/websites/01_robox.html")
-        idle=true
     }
 }
 
+const buttons = require('./button_led.js')
+
+buttons.Enterbutton.watch(function (err, value) { 
+  if (err) { 
+    console.error('There was an error', err); 
+  return;
+  }
+   pageChangeEnter();
+  
+});
+
+buttons.Exitbutton.watch(function (err, value) { 
+  if (err) { 
+    console.error('There was an error', err); 
+  return;
+  }
+   pageChangeExit();
+  
+});
+
+buttons.Playbutton.watch(function (err, value) { 
+  if (err) { 
+    console.error('There was an error', err); 
+  return;
+  }
+   playMedia();
+});
+
+/*
 const ioHook = require("iohook")
 ioHook.on("keydown", hook);
 ioHook.start();
@@ -196,4 +228,9 @@ function hook(event) {
     if (event.keycode == 25) { // p
         playMedia()
     }
+    if(event.keycode == 37) { // k
+        handleCordInput(1000)
+    }
+    
 }
+*/
