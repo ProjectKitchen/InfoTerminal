@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       var rate = ws.data
       console.log(rate)
       startvideo.playbackrate = rate/100*2
-      if(rate >= 100){
+      if(rate >= 7){
         startup++;
       }
       if(startup > 100){
