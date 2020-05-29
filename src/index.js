@@ -3,6 +3,8 @@ var app = express();
 var ws = require('express-ws')(app);
 var pagesystem = require('./paths.js')
 
+const buttons = require('./button_led.js')
+
 var currentPageIndex = 0;
 var rootpages = pagesystem.parseJson("./sitespaths.json")
 var currentpages = rootpages
@@ -148,25 +150,29 @@ function pageChangeExit() {
 
 function enterButtonStatus(status){
     if(status === true){
-        console.log("enter button on")
+        if (buttons.Yellowled.readSync() === 0){
+        buttons.Yellowled.writeSync(1);
+        }
     }else{
-        console.log("enter button off")
+        buttons.Yellowled.writeSync(0);
     }
 }
 
 function exitButtonStatus(status){
     if(status === true){
-        console.log("exit button on")
+         if (buttons.Redled.readSync() === 0){
+        buttons.Redled.writeSync(1);}
     }else{
-        console.log("exit button off")
+        buttons.Redled.writeSync(0);
     }
 }
 
 function mediaButtonStatus(status){
     if(status === true){
-        console.log("media button on")
+        if (buttons.Greenled.readSync() === 0){
+        buttons.Greenled.writeSync(1);}
     }else{
-        console.log("media button off")
+        buttons.Greenled.writeSync(0);
     }
 }
 
@@ -180,7 +186,6 @@ function goSleepMode() {
     }
 }
 
-const buttons = require('./button_led.js')
 
 buttons.Enterbutton.watch(function (err, value) { 
   if (err) { 
@@ -207,6 +212,22 @@ buttons.Playbutton.watch(function (err, value) {
   }
    playMedia();
 });
+
+var crank = require('./crankshaft.js')
+crank.Crankshaftevent.on('event',function(speed){
+   // process.stdout.clearLine(); 
+   // console.log("current speed= "+speed);
+if(idlemode == false){
+    if (speed > 10)  {pageChangeForward(); }
+   else if(speed < -10){
+     pageChangeBackwards();}
+    }else {
+        handleCordInput(speed)
+        }
+
+});
+
+
 
 /*
 const ioHook = require("iohook")
