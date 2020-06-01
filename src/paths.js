@@ -2,9 +2,8 @@ const path = require('path');
 const fs = require('fs');
 
 class Site {
-    constructor(path,actualpath) {
+    constructor(path) {
         this.path = path;
-        this.actualpath = actualpath
         this.subsites = []
     }
 }
@@ -37,7 +36,7 @@ function getSubFiles (startpath, pathToAdd)  {
         }
     });
     files.forEach(file => {
-        var site = new Site(path.join(pathToAdd, file.name),path.join(startpath, file.name))
+        var site = new Site(path.join(pathToAdd, file.name))
         directory.forEach(dir => {
             if (dir.name == path.basename(file.name, path.extname(file.name))) {
                 site.subsites = getSubFiles(path.join(startpath, dir.name), path.join(pathToAdd, dir.name))

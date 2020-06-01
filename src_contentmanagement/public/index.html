@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Side</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/fontawesome-all.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Manage New Side</h1>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <form action="/newsite" method="post" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="menuselect">Menu select:</label>
+                        <div class="col-sm-10">
+                            <select id="menuselect" name="menu" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="order">Order:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="order" name="order" value="" min="0">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="filename">Filename:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="filename" name="filename" value="" required minlength="1" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="title">Title:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="title" name="title" value="" required minlength="1"  >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="text">Text:</label>
+                        <div class="col-sm-10">
+                            <textarea type="text" class="form-control" id="text" name="text" value="" required minlength="1" ></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="fileToUpload">Pictures:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control-file form-control" name="picture[]" type="file" id="fileToUpload" multiple>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-secondary" value="addnewsite" name="submit">Add</button>
+                </form>
+            </div>
+            <div id="sites" class="col-6">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Order</th>
+                        <th scope="col">Pathname</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

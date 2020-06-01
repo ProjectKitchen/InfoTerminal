@@ -1,1259 +1,1008 @@
 [
     {
         "path": "websites\\01_robox.html",
-        "actualpath": "..\\webpages\\websites\\01_robox.html",
         "subsites": [
             {
                 "path": "websites\\01_robox\\01.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\01.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\02.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\02.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\03.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\03.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\04.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\04.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\04a.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\04a.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\05.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\05.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\06.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\06.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\07.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\07.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\08.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\08.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\09.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\09.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\10.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\10.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\11.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\11.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\12.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\12.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\13.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\13.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\14.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\14.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\15.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\15.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\16.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\16.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\17.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\17.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\18.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\18.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\19.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\19.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\20.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\20.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\21.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\21.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\22.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\22.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\23.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\23.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\24.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\24.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\25.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\25.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\26.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\26.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\28.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\28.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\29.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\29.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\30.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\30.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\31.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\31.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\32.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\32.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\33.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\33.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\34.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\34.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\35.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\35.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\36.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\36.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\37.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\37.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\39.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\39.html",
                 "subsites": []
             },
             {
                 "path": "websites\\01_robox\\40.html",
-                "actualpath": "..\\webpages\\websites\\01_robox\\40.html",
                 "subsites": []
             }
         ]
     },
     {
         "path": "websites\\02_time.html",
-        "actualpath": "..\\webpages\\websites\\02_time.html",
         "subsites": [
             {
                 "path": "websites\\02_time\\50000bc.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\50000bc.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\6000bc.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\6000bc.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\5000bc.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\5000bc.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\3000bc.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\3000bc.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\2600bc.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\2600bc.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\500bc.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\500bc.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\450bc.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\450bc.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\427bc.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\427bc.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\400bc.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\400bc.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\300bc.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\300bc.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\287bc.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\287bc.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\60.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\60.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\725.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\725.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1300.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1300.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1494.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1494.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1500.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1500.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1520.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1520.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1540.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1540.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1560.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1560.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1612.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1612.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1626.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1626.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1642.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1642.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1651.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1651.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1661.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1661.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1694.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1694.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1725.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1725.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1726.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1726.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1737.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1737.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1760.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1760.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1769.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1769.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1773.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1773.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1775.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1775.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1800.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1800.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1805.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1805.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1810.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1810.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1816.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1816.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1817.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1817.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1830.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1830.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1834.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1834.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1835.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1835.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1847.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1847.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1866.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1866.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1870.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1870.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1889.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1889.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1890.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1890.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1892.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1892.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1893.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1893.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1898.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1898.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1900.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1900.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1905.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1905.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1906.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1906.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1917.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1917.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1920.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1920.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1927.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1927.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1928.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1928.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1929.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1929.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1930.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1930.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1931.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1931.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1934.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1934.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1935.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1935.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1936.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1936.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1937.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1937.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1938.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1938.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1940.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1940.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1942.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1942.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1943.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1943.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1944.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1944.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1945.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1945.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1946.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1946.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1947.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1947.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1948.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1948.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1949.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1949.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1950.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1950.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1951.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1951.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1954.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1954.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1955.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1955.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1956.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1956.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1957.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1957.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1958.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1958.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1959.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1959.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1960.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1960.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1963.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1963.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1964.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1964.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1965.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1965.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1966.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1966.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1967.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1967.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1968.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1968.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1969.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1969.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1970.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1970.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1971.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1971.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1972.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1972.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1973.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1973.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1974.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1974.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1976.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1976.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1977.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1977.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1978.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1978.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1979.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1979.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1980.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1980.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1981.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1981.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1982.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1982.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1983.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1983.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1984.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1984.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1985.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1985.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1986.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1986.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1987.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1987.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1988.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1988.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1989.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1989.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1990.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1990.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1991.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1991.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1992.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1992.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1993.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1993.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1994.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1994.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1995.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1995.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1996.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1996.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1997.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1997.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1998.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1998.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\1999.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\1999.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\2000.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\2000.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\2001.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\2001.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\2002.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\2002.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\2003.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\2003.html",
                 "subsites": []
             },
             {
                 "path": "websites\\02_time\\2004.html",
-                "actualpath": "..\\webpages\\websites\\02_time\\2004.html",
                 "subsites": []
             }
         ]
     },
     {
         "path": "websites\\03_shifz.html",
-        "actualpath": "..\\webpages\\websites\\03_shifz.html",
         "subsites": [
             {
                 "path": "websites\\03_shifz\\01.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\01.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\01a.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\01a.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\02.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\02.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\02big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\02big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\03.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\03.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\04.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\04.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\04big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\04big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\05.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\05.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\05a.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\05a.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\06.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\06.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\07.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\07.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\08.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\08.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\08big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\08big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\09.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\09.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\09big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\09big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\10.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\10.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\10big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\10big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\11.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\11.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\11a.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\11a.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\12.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\12.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\12big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\12big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\13.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\13.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\13big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\13big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\14.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\14.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\14big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\14big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\15.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\15.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\15big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\15big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\16.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\16.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\16big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\16big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\17.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\17.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\17big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\17big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\18.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\18.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\18big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\18big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\19.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\19.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\19big.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\19big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\03_shifz\\20.html",
-                "actualpath": "..\\webpages\\websites\\03_shifz\\20.html",
                 "subsites": []
             }
         ]
     },
     {
         "path": "websites\\04_archiv.html",
-        "actualpath": "..\\webpages\\websites\\04_archiv.html",
         "subsites": [
             {
                 "path": "websites\\04_archiv\\01.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\01.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\02.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\02.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\03.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\03.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\04.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\04.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\04a.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\04a.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\05.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\05.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\06.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\06.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\07.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\07.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\07a.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\07a.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\07big.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\07big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\08.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\08.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\08big.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\08big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\09.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\09.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\09big.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\09big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\10.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\10.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\10big.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\10big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\11.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\11.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\11big.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\11big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\12.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\12.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\12big.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\12big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\13.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\13.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\13big.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\13big.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\14.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\14.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\15.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\15.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\16.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\16.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\17.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\17.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\18.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\18.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\19.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\19.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\20.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\20.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\21.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\21.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\22.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\22.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\23.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\23.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\24.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\24.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\25.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\25.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\26.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\26.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\27.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\27.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\28.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\28.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\29.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\29.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\30.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\30.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\31.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\31.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\32.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\32.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\33.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\33.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\34.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\34.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\35.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\35.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\36.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\36.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\37.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\37.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\38.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\38.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\39.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\39.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\40.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\40.html",
                 "subsites": []
             },
             {
                 "path": "websites\\04_archiv\\41.html",
-                "actualpath": "..\\webpages\\websites\\04_archiv\\41.html",
                 "subsites": []
             }
         ]
