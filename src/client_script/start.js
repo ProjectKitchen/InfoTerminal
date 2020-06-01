@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   function handleIncomingMessage (ws) {
       var rate = ws.data
       console.log(rate)
-      startvideo.playbackrate = rate/100*2
+      startvideo.playbackRate = rate/100*2
       if(rate >= 7){
         startup++;
       }
@@ -55,6 +55,24 @@ document.addEventListener("DOMContentLoaded", function (event) {
         startVideo()
       }
   }
+/* // This is for the gradual increase of idle mode animation sound when the system is initially started
+  // Initial volume of 0.20
+  // Make sure it's a multiple of 0.05
+  var vol = 0.20;
+  var interval = 200;
+
+  var fadein = setInterval(
+    function() {
+      // This works as long as you start with a multiple of 0.05!
+      if (vol < 1) {
+        vol += 0.05;
+        startvideo.setVolume(vol);
+      }
+      else {
+        clearInterval(fadein);
+      }
+    }, interval);
+*/
 
   function changeToNormal(){
     websocketStartup.send("start")
@@ -64,28 +82,28 @@ document.addEventListener("DOMContentLoaded", function (event) {
   // adding the video element to the DOM, to play the starting animation
 function startVideo(){
   var vid = document.createElement('video');
-  
+
   vid.classList.add('playing');
-  
+
   vid.src = '../../video/start.m4v';
-  
+
   vid.load();
   vid.style.setProperty("position","absolute")
   vid.style.setProperty("z-index","999")
   document.body.appendChild(vid)
   document.getElementById("startvideo").remove()
   vid.play();
-  
+
   vid.addEventListener('ended', function(e) {
-  
-  
+
+
   //let postLoad = document.querySelector("#postLoad");
   //postLoad.style.opacity = 1;
-  
+
     vid.pause()
-  
+
     vid.currentTime = 0;
-  
+
     vid.classList.remove('playing');
      changeToNormal()
     setTimeout(function() {
@@ -94,4 +112,3 @@ function startVideo(){
   }, true);
   }
 })
-
