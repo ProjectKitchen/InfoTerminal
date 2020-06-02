@@ -3,8 +3,6 @@ var app = express();
 var ws = require('express-ws')(app);
 var pagesystem = require('./paths.js')
 
-const buttons = require('./button_led.js')
-
 var currentPageIndex = 0;
 var rootpages = pagesystem.parseJson("./sitespaths.json")
 var currentpages = rootpages
@@ -150,6 +148,20 @@ function pageChangeExit() {
     }
 }
 
+function goSleepMode() {
+    if (reloading == false) {
+        reloading = true
+        clearTimeout(timer)
+        timer = undefined
+        idlemode=true
+        websocketReload.send('x'+"/websites/01_robox.html")
+    }
+}
+
+
+
+const buttons = require('./button_led.js')
+
 function enterButtonStatus(status){
     if(status === true){
         if (buttons.Yellowled.readSync() === 0){
@@ -177,17 +189,6 @@ function mediaButtonStatus(status){
         buttons.Greenled.writeSync(0);
     }
 }
-
-function goSleepMode() {
-    if (reloading == false) {
-        reloading = true
-        clearTimeout(timer)
-        timer = undefined
-        idlemode=true
-        websocketReload.send('x'+"/websites/01_robox.html")
-    }
-}
-
 
 buttons.Enterbutton.watch(function (err, value) { 
   if (err) { 
@@ -217,8 +218,6 @@ buttons.Playbutton.watch(function (err, value) {
 
 var crank = require('./crankshaft.js')
 crank.Crankshaftevent.on('event',function(speed){
-   // process.stdout.clearLine(); 
-   // console.log("current speed= "+speed);
 if(idlemode == false){
     if (speed > 10)  {pageChangeForward(); }
    else if(speed < -10){
@@ -230,35 +229,7 @@ if(idlemode == false){
 });
 
 
-
-/*
-const ioHook = require("iohook")
-ioHook.on("keydown", hook);
-ioHook.start();
-function hook(event) {
-    if (event.keycode == 32) { // d
-        pageChangeForward()
-    }
-    if (event.keycode == 30) { // a
-        pageChangeBackwards()
-    }
-    if (event.keycode == 17) { // w
-        pageChangeEnter()
-    }
-    if (event.keycode == 31) { // s
-        pageChangeExit()
-    }
-    if (event.keycode == 25) { // p
-        playMedia()
-    }
-    if(event.keycode == 37) { // k
-        handleCordInput(1000)
-    }
-    
-}
-*/
 process.on('SIGINT',  (signal) => {
-    //crank.Crankshaftevent.unexport()
     buttons.Playbutton.unexport()
     buttons.Enterbutton.unexport()
     buttons.Exitbutton.unexport()
@@ -270,3 +241,30 @@ process.on('SIGINT',  (signal) => {
     })
      process.exit(0)
   });
+
+
+/*
+const ioHook = require("iohook")
+ioHook.on("keydown", hook);
+ioHook.start();
+function hook(event) {
+    if (event.keycode == 6) { // d
+        pageChangeForward()
+    }
+    if (event.keycode == 7) { // a
+        pageChangeBackwards()
+    }
+    if (event.keycode == 8) { // w
+        pageChangeEnter()
+    }
+    if (event.keycode ==9) { // s
+        pageChangeExit()
+    }
+    if (event.keycode == 10) { // p
+        playMedia()
+    }
+    if(event.keycode == 11) { // k
+        handleCordInput(1000)
+    }
+}
+*/

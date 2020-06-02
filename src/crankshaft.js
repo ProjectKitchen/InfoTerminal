@@ -45,10 +45,4 @@ function checkSpeed() {
   myemitter.emit('event',speed);
 }
 
-function unexportOnClose() {
-    SignalA.unexport()
-    SignalB.unexport()
-};
-process.on('SIGINT', unexportOnClose)
-
 setInterval(checkSpeed,200);

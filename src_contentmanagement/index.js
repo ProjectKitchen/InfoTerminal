@@ -82,16 +82,19 @@ app.post('/newsite', addSide.array("picture[]", 4),
             if (err) throw err;
 
             var images = "";
-            imagepaths.forEach((paths) => {
-                fs.rename(paths["oldpath"], paths["newpath"], function (err) {
-                    if (err) throw err
-                    console.log('Successfully moved file!')
-                  })
-                images += '<img src="' + paths["contentpath"] + '" alt="' + paths["filename"] + '" >'
-            })
+            if(imagepaths.length > 0){
+                imagepaths.forEach((paths) => {
+                    fs.rename(paths["oldpath"], paths["newpath"], function (err) {
+                        if (err) throw err
+                        console.log('Successfully moved file!')
+                    })
+                    images += '<img src="' + paths["contentpath"] + '" alt="' + paths["filename"] + '" >'
+                })
+                images =  '<div class="picture">' + images + '</div>'
+            }
             var newValue = data.replace('<h1 class="title">', ' <h1 class="title">' + title)
                 .replace('<p class="text">', '<p class="text">' + text)
-                .replace('<div class="picture">', '<div class="picture">' + images);
+                .replace('<div class="picture"></div>', images);
 
             fs.writeFile(finishedFilePath, newValue, { encoding: 'utf-8', flag: 'w' }, function (err, data) {
                 if (err) throw err;

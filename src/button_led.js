@@ -13,31 +13,3 @@ exports.Playbutton = L_Playbutton;
 exports.Greenled = L_GreenLedPin;
 exports.Redled = R_RedLedPin;
 exports.Yellowled = M_YellowLedPin;
-
-/*
-function pressed_enterButton()
-{
-  bt.Exitbutton.watch(function (err, value) { 
-  if (err) { 
-    console.error('There was an error', err); 
-  return;
-  }
-   pageChangeExit();
-  
-});
-  }
-*/
-
-
-/*function unexportOnClose() { //function to run when exiting program
- // GreenLedPin.writeSync(1); // Turn LED off
-  var GPIO_data = [L_GreenLedPin,M_RedLedPin,R_YellowLedPin,L_Playbutton,
-                        M_Enterbutton,R_Exitbutton];
-  for (i=0; i < GPIO_data.length; i++){
-     GPIO_data[i].unexport();
-    }
-                           // Unexport Button GPIO to free resources
-};
-
-process.on('SIGINT', unexportOnClose);
-*/
