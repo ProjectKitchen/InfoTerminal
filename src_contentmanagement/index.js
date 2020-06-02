@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
 const { check, validationResult, body } = require('express-validator');
+const path = require('path');
 
 var fs = require('fs');
 var bodyParser = require('body-parser')
 var storage
 const multer = require('multer')
 
+const CONTENT_PASSWORD = "PASS"
 
 app.use('/', express.static('./public'));
 app.use('/upload', express.static('./upload'));
@@ -21,10 +23,16 @@ app.get("/jsonsites", (req, res) => {
 })
 
 app.post("/deleteSide", bodyParser.urlencoded({ extended: true }), (req, res) => {
-    var sidePath = req.body.sidePathToDelete
-    var menuselect = req.body.menuselect
+    let password = req.body.password
+    if(password !== CONTENT_PASSWORD){
+        deleteFolderContent("./upload")
+        res.redirect("/")
+        return res.end()
+    }
+    let sidePath = req.body.sidePathToDelete
+    let menuselect = req.body.menuselect
     deleteSide(sidePath, menuselect)
-    res.end()
+    return res.end()
 })
 
 storage = multer.diskStorage({
@@ -42,7 +50,12 @@ app.post('/newsite', addSide.array("picture[]", 4),
         if (!errors.isEmpty()) {
             return res.status(422).json({ errors: errors.array() });
         }
-        
+        var password = req.body.password
+        if(password !== CONTENT_PASSWORD){
+            deleteFolderContent("./upload")
+            res.redirect("/")
+            return  res.end();
+        }
         var filename = req.body.filename
         var title = req.body.title
         var text = req.body.text
@@ -100,7 +113,7 @@ app.post('/newsite', addSide.array("picture[]", 4),
 
     });
 var port = 7070
-app.listen(port, function () {
+const server = app.listen(port, function () {
     console.log('App listening on port ' + port +'!');
 });
 
@@ -156,6 +169,18 @@ function getIndicesOf(searchStr, str, caseSensitive) {
         startIndex = index + searchStrLen;
     }
     return indices;
+}
+
+function deleteFolderContent(folderpath){
+    fs.readdir(folderpath, (err, files) => {
+        if (err) throw err;
+      
+        for (const file of files) {
+          fs.unlink(path.join(folderpath, file), err => {
+            if (err) throw err;
+          });
+        }
+      });
 }
 
 class Site {

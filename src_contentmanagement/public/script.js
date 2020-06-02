@@ -85,8 +85,9 @@ function deleteSide(sidePathToDelete) {
         console.log(status)
         console.log(request.response)
       }
-    };
+    }
+    let password = document.getElementById("sidepassword").value
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.send("sidePathToDelete=" + sidePathToDelete + "&menuselect=" + selected);
+    request.send("sidePathToDelete=" + sidePathToDelete + "&menuselect=" + selected + "&password="+ password);
   }
 }
