@@ -42,20 +42,36 @@ document.addEventListener("DOMContentLoaded", function (event) {
   websocketStartup.addEventListener("message", handleIncomingMessage)
 
   var startup = 0
-
+var startupInProgress = false
   function handleIncomingMessage (ws) {
       var rate = ws.data
+      
       console.log(rate)
-      startvideo.playbackRate = rate/100*2
+      
+      if(startupInProgress == false){
+        if(rate < 0)
+        {
+          rate = -rate;
+          }
+       var playback = rate/10
+       if(playback > 4) {
+         playback = 4
+         }
+       startvideo.playbackRate= playback;
+      
+      console.log(startvideo.playbackRate + " Playrate " )
       if(rate >= 7){
         startup++;
+        fadein;
       }
       if(startup > 100){
+          startupInProgress = true
         startvideo.pause()
         startVideo()
       }
   }
-/* // This is for the gradual increase of idle mode animation sound when the system is initially started
+  }
+ // This is for the gradual increase of idle mode animation sound when the system is initially started
   // Initial volume of 0.20
   // Make sure it's a multiple of 0.05
   var vol = 0.20;
@@ -66,13 +82,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
       // This works as long as you start with a multiple of 0.05!
       if (vol < 1) {
         vol += 0.05;
-        startvideo.setVolume(vol);
+        vol = vol % 1;
+        startvideo.volume = vol;
       }
       else {
         clearInterval(fadein);
       }
     }, interval);
-*/
+
 
   function changeToNormal(){
     websocketStartup.send("start")
@@ -83,15 +100,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
 function startVideo(){
   var vid = document.createElement('video');
 
-  vid.classList.add('playing');
-
-  vid.src = '../../video/start.m4v';
+    vid.src = '../../video/start.m4v';
 
   vid.load();
   vid.style.setProperty("position","absolute")
   vid.style.setProperty("z-index","999")
   document.body.appendChild(vid)
-  document.getElementById("startvideo").remove()
+  vid.volume = 1.0;
+  
+  //document.getElementById("startvideo").remove()
   vid.play();
 
   vid.addEventListener('ended', function(e) {
@@ -104,8 +121,7 @@ function startVideo(){
 
     vid.currentTime = 0;
 
-    vid.classList.remove('playing');
-     changeToNormal()
+    changeToNormal()
     setTimeout(function() {
       document.body.removeChild(vid);
     }, 20);

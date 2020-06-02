@@ -27,6 +27,8 @@ var websocketMediaControl
 var timer = undefined
 var sleepModeTime = 600000
 
+
+
 app.ws('/reload', function (ws, req) {
     websocketReload = ws;
     if(idlemode == true){
@@ -81,7 +83,7 @@ function handleCordInput(data){
 }
 
 var port = 8080
-app.listen(port, function () {
+const server = app.listen(port, function () { 
     console.log('App listening on port ' + port +'!');
 });
 
@@ -255,3 +257,16 @@ function hook(event) {
     
 }
 */
+process.on('SIGINT',  (signal) => {
+    //crank.Crankshaftevent.unexport()
+    buttons.Playbutton.unexport()
+    buttons.Enterbutton.unexport()
+    buttons.Exitbutton.unexport()
+    buttons.Greenled.unexport()
+    buttons.Yellowled.unexport()
+    buttons.Redled.unexport()
+        server.close(() => {
+        console.log('Closed out remaining connections');
+    })
+     process.exit(0)
+  });

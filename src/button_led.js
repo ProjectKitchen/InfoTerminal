@@ -29,7 +29,7 @@ function pressed_enterButton()
 */
 
 
-function unexportOnClose() { //function to run when exiting program
+/*function unexportOnClose() { //function to run when exiting program
  // GreenLedPin.writeSync(1); // Turn LED off
   var GPIO_data = [L_GreenLedPin,M_RedLedPin,R_YellowLedPin,L_Playbutton,
                         M_Enterbutton,R_Exitbutton];
@@ -40,3 +40,4 @@ function unexportOnClose() { //function to run when exiting program
 };
 
 process.on('SIGINT', unexportOnClose);
+*/
