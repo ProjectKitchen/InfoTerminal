@@ -34,35 +34,41 @@ document.addEventListener("DOMContentLoaded", function (event) {
   // Make sure it's a multiple of 0.05
   var vol = 0.20;
   var interval = 200;
-
+  var fadeinSound = undefined
   function soundFadeIn() {
-    var fadeinSound = setTimeout(
-      function () {
-        // This works as long as you start with a multiple of 0.05!
-        if (vol < 1) {
-          vol += 0.05;
-          startvideo.volume = vol;
-        }
-        else {
-          clearTimeout(fadeinSound);
-        }
-      }, interval);
+    if (fadeinSound == undefined) {
+      fadeinSound = setTimeout(
+        function () {
+          // This works as long as you start with a multiple of 0.05!
+          if (vol < 1) {
+            vol += 0.05;
+            startvideo.volume = vol;
+            fadeinSound = undefined
+          }
+          else {
+            clearTimeout(fadeinSound);
+          }
+        }, interval);
+    }
   }
   var playbackRateCur = 0.50;
   var interval = 200;
-
+  var fadeinPlayback = undefined
   function playbackFadein() {
-  var fadeinPlayback = setTimeout(
-    function () {
-      // This works as long as you start with a multiple of 0.05!
-      if (playbackRateCur < 1.5) {
-         playbackRateCur += 0.05;
-        startvideo.playbackRate = playbackRateCur;
-      }
-      else {
-        clearTimeout(fadeinPlayback);
-      }
-    }, interval);
+    if(fadeinPlayback == undefined){
+    fadeinPlayback = setTimeout(
+      function () {
+        // This works as long as you start with a multiple of 0.05!
+        if (playbackRateCur < 1.5) {
+          playbackRateCur += 0.05;
+          startvideo.playbackRate = playbackRateCur;
+          fadeinPlayback = undefined
+        }
+        else {
+          clearTimeout(fadeinPlayback);
+        }
+      }, interval);
+    }
   }
 
   function changeToNormal() {

@@ -58,11 +58,6 @@ function getSound(src) {
 }
 
 function goSleepMode() {
-    // When the system is in the idle mode, the exit animation will be played and then the walking bull animation will be looped.
-
-    // loading the exit animation
-    //postLoad.style.opacity = 0;
-
     var vid2 = document.createElement('video');
 
     vid2.classList.add('playing');

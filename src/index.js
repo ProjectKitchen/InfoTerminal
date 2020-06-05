@@ -41,8 +41,8 @@ app.ws('/reload', function (ws, req) {
     if (currentpages[currentPageIndex].subsites.length > 0) {
         subsites = true
     }
-    //enterButtonStatus(subsites)
-    //exitButtonStatus(parentSides)
+    enterButtonStatus(subsites)
+    exitButtonStatus(parentSides)
     
     reloading = false
     if (timer == undefined) { timer = setTimeout(function () { goSleepMode() }, sleepModeTime) }
@@ -61,7 +61,7 @@ app.ws('/media', function (ws, req) {
         let status = false
         if (message == "true") { status = true }
         hasmedia = status;
-        //mediaButtonStatus(status)
+        mediaButtonStatus(status)
     })
 });
 
@@ -165,7 +165,7 @@ function goSleepMode() {
 }
 
 
-/*
+
 const buttons = require('./button_led.js')
 
 function enterButtonStatus(status){
@@ -247,9 +247,9 @@ process.on('SIGINT',  (signal) => {
     })
      process.exit(0)
   });
-  */
 
 
+/*
 const ioHook = require("iohook")
 ioHook.on("keydown", hook);
 ioHook.start();
@@ -273,3 +273,4 @@ function hook(event) {
         handleCordInput(1000)
     }
 }
+  */
