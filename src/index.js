@@ -3,6 +3,8 @@ var app = express();
 var ws = require('express-ws')(app);
 var pagesystem = require('./paths.js')
 
+var soundplaying = require('./soundplaying.js')
+
 var currentPageIndex = 0;
 var rootpages = pagesystem.parseJson("./sitespaths.json")
 var currentpages = rootpages
@@ -25,27 +27,26 @@ var websocketMediaControl
 var timer = undefined
 var sleepModeTime = 600000
 
-
-
 app.ws('/reload', function (ws, req) {
     websocketReload = ws;
-    if(idlemode == true){
+    if (idlemode == true) {
         reloading = true;
         websocketReload.send("s/")
     }
     let subsites = false
-    let parentSides=false
+    let parentSides = false
     if (pagehistory.length > 0) {
         parentSides = true
     }
     if (currentpages[currentPageIndex].subsites.length > 0) {
         subsites = true
     }
-    enterButtonStatus(subsites)
-    exitButtonStatus(parentSides)
+    //enterButtonStatus(subsites)
+    //exitButtonStatus(parentSides)
+    
     reloading = false
-    if(timer == undefined){ timer = setTimeout(function(){ goSleepMode() },  sleepModeTime) }
-    ws.on("close", (err, connection) => { reloading = true; })
+    if (timer == undefined) { timer = setTimeout(function () { goSleepMode() }, sleepModeTime) }
+    ws.on("close", (error, connection) => { reloading = true; })
 });
 
 
@@ -58,9 +59,9 @@ app.ws('/media', function (ws, req) {
     ws.on("close", (err, connection) => { mediainput = true; hasmedia = false })
     ws.on("message", (message) => {
         let status = false
-        if(message == "true"){  status = true   }
+        if (message == "true") { status = true }
         hasmedia = status;
-        mediaButtonStatus(status)
+        //mediaButtonStatus(status)
     })
 });
 
@@ -68,21 +69,21 @@ app.ws('/startup', function (ws, req) {
     websocketStartup = ws;
     ws.on("close", (err, connection) => { websocketStartup = undefined })
     ws.on("message", (message) => {
-      if(message == "start"){
-        idlemode = false
-      }
+        if (message == "start") {
+            idlemode = false
+        }
     })
 });
 
-function handleCordInput(data){
-    if(websocketStartup != undefined){
-    websocketStartup.send(data)
+function handleCordInput(data) {
+    if (websocketStartup != undefined) {
+        websocketStartup.send(data)
     }
 }
 
 var port = 8080
-const server = app.listen(port, function () { 
-    console.log('App listening on port ' + port +'!');
+const server = app.listen(port, function () {
+    console.log('App listening on port ' + port + '!');
 });
 
 function playMedia() {
@@ -105,7 +106,8 @@ function pageChangeForward() {
         if (currentPageIndex >= currentpages.length) {
             currentPageIndex = 0;
         }
-        websocketReload.send('f' +currentpages[currentPageIndex].path)
+        soundplaying.playSound("../audio/next.wav")
+        websocketReload.send(currentpages[currentPageIndex].path)
     }
 }
 
@@ -117,7 +119,8 @@ function pageChangeBackwards() {
         if (currentPageIndex < 0) {
             currentPageIndex = currentpages.length - 1;
         }
-        websocketReload.send('b' +currentpages[currentPageIndex].path)
+        soundplaying.playSound("../audio/prev.wav")
+        websocketReload.send(currentpages[currentPageIndex].path)
     }
 }
 
@@ -130,8 +133,9 @@ function pageChangeEnter() {
             pagehistoryindex.push(currentPageIndex)
             currentpages = currentpages[currentPageIndex].subsites
             currentPageIndex = 0
-            websocketReload.send('e' + currentpages[currentPageIndex].path)
-            
+            soundplaying.playSound("../audio/enter.wav")
+            websocketReload.send(currentpages[currentPageIndex].path)
+
         }
     }
 }
@@ -143,7 +147,8 @@ function pageChangeExit() {
             timer.refresh()
             currentpages = pagehistory.pop()
             currentPageIndex = pagehistoryindex.pop()
-            websocketReload.send('x' + currentpages[currentPageIndex].path)
+            soundplaying.playSound("../audio/exit.wav")
+            websocketReload.send(currentpages[currentPageIndex].path)
         }
     }
 }
@@ -153,13 +158,14 @@ function goSleepMode() {
         reloading = true
         clearTimeout(timer)
         timer = undefined
-        idlemode=true
-        websocketReload.send('x'+"/websites/01_robox.html")
+        idlemode = true
+        soundplaying.playSound("../audio/exit.wav")
+        websocketReload.send("/websites/01_robox.html")
     }
 }
 
 
-
+/*
 const buttons = require('./button_led.js')
 
 function enterButtonStatus(status){
@@ -241,9 +247,9 @@ process.on('SIGINT',  (signal) => {
     })
      process.exit(0)
   });
+  */
 
 
-/*
 const ioHook = require("iohook")
 ioHook.on("keydown", hook);
 ioHook.start();
@@ -257,14 +263,13 @@ function hook(event) {
     if (event.keycode == 8) { // w
         pageChangeEnter()
     }
-    if (event.keycode ==9) { // s
+    if (event.keycode == 9) { // s
         pageChangeExit()
     }
     if (event.keycode == 10) { // p
         playMedia()
     }
-    if(event.keycode == 11) { // k
+    if (event.keycode == 11) { // k
         handleCordInput(1000)
     }
 }
-*/

@@ -5,6 +5,7 @@ class Site {
     constructor(path) {
         this.path = path;
         this.subsites = []
+        this.nixitubes = ""
     }
 }
 
