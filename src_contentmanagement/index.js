@@ -26,8 +26,7 @@ app.post("/deleteSide", bodyParser.urlencoded({ extended: true }), (req, res) =>
     let password = req.body.password
     if(password !== CONTENT_PASSWORD){
         deleteFolderContent("./upload")
-        res.redirect("/")
-        return res.end()
+        return res.status(401).end()
     }
     let sidePath = req.body.sidePathToDelete
     let menuselect = req.body.menuselect
@@ -53,8 +52,9 @@ app.post('/newsite', addSide.array("picture[]", 4),
         var password = req.body.password
         if(password !== CONTENT_PASSWORD){
             deleteFolderContent("./upload")
-            res.redirect("/")
-            return  res.end();
+            
+            return  res.redirect("/index.html?error=err").
+            res.status(401).end()
         }
         var filename = req.body.filename
         var title = req.body.title

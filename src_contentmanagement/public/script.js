@@ -1,19 +1,24 @@
 
-
 var titleFormMax = 100
 var textareaFormMax = 1000
 var sites = []
 updateContent()
 document.getElementById("menuselect").onchange = function (event) {
   fillContent()
-  
+}
+
+var queryDict = {}
+location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
+if(queryDict["error"]){
+  errorMessage()
 }
 
 document.getElementById("title").setAttribute("maxlength", titleFormMax)
 document.getElementById("text").setAttribute("maxlength", textareaFormMax)
+
 function updateContent() {
   getJSON(location.origin + "/jsonsites", (status, data) => {
-    document.getElementById("menuselect").innerHTML=""
+    document.getElementById("menuselect").innerHTML = ""
     data.forEach(element => {
       document.getElementById("menuselect").innerHTML += '<option value="' + element.path + '">' + element.path + '</option>'
     });
@@ -44,7 +49,7 @@ function fillContent() {
   tableBody.innerHTML = ""
   sites[selection.selectedIndex].subsites.forEach((side) => {
     var tableRow = document.createElement("tr")
-    
+
     var order = document.createElement("td")
     order.innerHTML = position
     tableRow.appendChild(order)
@@ -65,7 +70,7 @@ function fillContent() {
     position++
     tableBody.appendChild(tableRow)
   })
-  document.getElementById("order").setAttribute("max", sites[selection.selectedIndex].subsites.length - 1)
+  document.getElementById("order").setAttribute("max", sites[selection.selectedIndex].subsites.length)
   document.getElementById("order").value = 0
 }
 
@@ -82,12 +87,15 @@ function deleteSide(sidePathToDelete) {
       if (status === 200) {
         updateContent()
       } else {
-        console.log(status)
-        console.log(request.response)
+        errorMessage()
       }
     }
     let password = document.getElementById("sidepassword").value
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.send("sidePathToDelete=" + sidePathToDelete + "&menuselect=" + selected + "&password="+ password);
+    request.send("sidePathToDelete=" + sidePathToDelete + "&menuselect=" + selected + "&password=" + password);
   }
+}
+
+function errorMessage() {
+  alert("Error Password is needed!")
 }
