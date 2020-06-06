@@ -52,9 +52,8 @@ app.post('/newsite', addSide.array("picture[]", 4),
         var password = req.body.password
         if(password !== CONTENT_PASSWORD){
             deleteFolderContent("./upload")
-            
-            return  res.redirect("/index.html?error=err").
-            res.status(401).end()
+             res.redirect("/index.html?error=err")
+              return res.end()
         }
         var filename = req.body.filename
         var title = req.body.title
