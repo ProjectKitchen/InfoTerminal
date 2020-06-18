@@ -2,8 +2,9 @@ const Gpio = require('onoff').Gpio;
 const EventEmitter = require('events')
 const myemitter = new EventEmitter();
 
+
 exports.Crankshaftevent = myemitter;
-exports.Crankshaftevent2 = myemitter;
+
 const SignalA = new Gpio(23, 'in', 'both');
 const SignalB = new Gpio(24, 'in', 'both');
 var position=0;
@@ -44,5 +45,6 @@ function checkSpeed() {
   old_position=position;
   myemitter.emit('event',speed);
 }
+
 
 setInterval(checkSpeed,200);

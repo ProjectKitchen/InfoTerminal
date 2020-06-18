@@ -3,6 +3,8 @@ var app = express();
 var ws = require('express-ws')(app);
 var pagesystem = require('./paths.js')
 
+const buttons = require('./button_led.js')
+
 var soundplaying = require('./soundplaying.js')
 
 var currentPageIndex = 0;
@@ -26,6 +28,8 @@ var websocketMediaControl
 // 5 s in 600000 ms
 var timer = undefined
 var sleepModeTime = 600000
+//Testing
+//var sleepModeTime = 6000
 
 app.ws('/reload', function (ws, req) {
     websocketReload = ws;
@@ -73,6 +77,9 @@ app.ws('/startup', function (ws, req) {
             idlemode = false
         }
     })
+        buttons.Redled.writeSync(0);
+        buttons.Yellowled.writeSync(0);
+        buttons.Greenled.writeSync(0);
 });
 
 function handleCordInput(data) {
@@ -161,12 +168,13 @@ function goSleepMode() {
         idlemode = true
         soundplaying.playSound("../audio/exit.wav")
         websocketReload.send("/websites/01_robox.html")
+         buttons.Redled.writeSync(0);
+        buttons.Yellowled.writeSync(0);
+        buttons.Greenled.writeSync(0);
+        
     }
 }
 
-
-
-const buttons = require('./button_led.js')
 
 function enterButtonStatus(status){
     if(status === true){
@@ -179,6 +187,7 @@ function enterButtonStatus(status){
 }
 
 function exitButtonStatus(status){
+    
     if(status === true){
          if (buttons.Redled.readSync() === 0){
         buttons.Redled.writeSync(1);}
@@ -225,8 +234,8 @@ buttons.Playbutton.watch(function (err, value) {
 var crank = require('./crankshaft.js')
 crank.Crankshaftevent.on('event',function(speed){
 if(idlemode == false){
-    if (speed > 10)  {pageChangeForward(); }
-   else if(speed < -10){
+   if (speed > 7)  {pageChangeForward(); }
+   else if(speed < -7){
      pageChangeBackwards();}
     }else {
         handleCordInput(speed)
@@ -235,13 +244,19 @@ if(idlemode == false){
 });
 
 
-process.on('SIGINT',  (signal) => {
-    buttons.Playbutton.unexport()
+function unexports ()
+{
+     buttons.Playbutton.unexport()
     buttons.Enterbutton.unexport()
     buttons.Exitbutton.unexport()
     buttons.Greenled.unexport()
     buttons.Yellowled.unexport()
     buttons.Redled.unexport()
+    
+}
+
+process.on('SIGINT',  (signal) => {
+        unexports()
         server.close(() => {
         console.log('Closed out remaining connections');
     })
