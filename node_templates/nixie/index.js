@@ -12,7 +12,7 @@ CS2.writeSync( 1 );
 CS3.writeSync( 1 );
 CS4.writeSync( 1 );
 
-var spi = SPI.initialize("/dev/spidev0.0");
+var spi = SPI.initialize("/dev/spidev1.0");
 // SPI0.0: MOSI [BCM 10, physical pin 19] 
 
 
