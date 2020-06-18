@@ -24,7 +24,7 @@ This project was built with the assistance of the following libraries and tools:
  * Optional Neopixel
  * Crankshaft [EN 11 Encoder](https://static6.arrow.com/aropdfconversion/86c9eaacb1087ae9aac6133ae19f759abae66df1/en11.pdf) Datasheets
 
-How to connect the components with Raspberry PI? [Plan](https://https://github.com/ProjectKitchen/InfoTerminal#Connection scheme)
+How to connect the components with Raspberry PI? [Scheme](https://https://github.com/ProjectKitchen/InfoTerminal#Connection-scheme)
 
 ## Setup
 

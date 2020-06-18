@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   var startupInProgress = false
   function handleIncomingMessage(ws) {
     var rate = ws.data
+    console.log(rate);
     if (startupInProgress == false) {
       if (rate < 0) {
         rate = -rate;
@@ -39,9 +40,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     if (fadeinSound == undefined) {
       fadeinSound = setTimeout(
         function () {
-          // This works as long as you start with a multiple of 0.05!
-          if (vol < 1) {
-            vol += 0.05;
+          vol += 0.05;// This works as long as you start with a multiple of 0.05!
+          if (vol <= 1) {
             startvideo.volume = vol;
             fadeinSound = undefined
           }
