@@ -1,0 +1,135 @@
+
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<h1>Charlie Chaplin - Modern Times</h1>
+
+
+<div class="outer-container">
+    <div class="inner-container">
+        <div id="ovl" class="video-overlay" >
+            <video id="player1" src="Charlie_Chaplin_Modern_Times_EatingMachine.mp4"  autoplay loop></video> 
+        </div>
+        <video id="player2" src="Charlie_Chaplin_Modern_Times_EatingMachine_reverse.mp4"  loop></video> 
+    </div>
+</div>
+
+<input type="range" min="-150" max="150" value="0" id="speedRange">
+<p>Playback-Speed: <span id="actSpeed"></span></p>  
+
+<script>
+   
+var direction=0;
+
+
+function showOverlay(){
+       document.getElementById("ovl").style.opacity = "1.0";
+}
+
+function hideOverlay(){
+       document.getElementById("ovl").style.opacity = "0.0";
+}
+
+
+  var myPlayer1 = document.getElementById("player1"); 
+  myPlayer1.mozPreservesPitch = false;
+  myPlayer1.loop=true; 
+  myPlayer1.volume=0.0;
+  myPlayer1.playbackRate=0; 
+  myPlayer1.play(); 
+  var myPlayer2 = document.getElementById("player2"); 
+  myPlayer2.mozPreservesPitch = false;
+  myPlayer2.loop=true; 
+  myPlayer2.volume=0.0; 
+  myPlayer2.playbackRate=0; 
+  myPlayer2.play(); 
+
+   function InitWebSocket() {
+      
+      if ("WebSocket" in window) {
+         // Let us open a web socket
+         var ws = new WebSocket("ws://localhost:8765");
+         console.log("Websocket opened");
+         ws.onopen = function() {     
+            // Web Socket is connected, send data using send()
+            ws.send("hello server!");
+            console.log("hello-message sent");
+         };
+
+         ws.onmessage = function (evt) { 
+            var received_msg = evt.data;
+            console.log("received:" + received_msg);
+            rate = parseFloat(received_msg);
+            slider.value=rate*100;
+            output.innerHTML=rate*100;
+
+            if (rate>0.0) {
+              if (direction!=1) { 
+                 showOverlay(); 
+                 direction=1;
+                 myPlayer1.volume=1.0;
+                 myPlayer2.volume=0.0;
+              }
+
+              myPlayer1.playbackRate = rate;
+              duration=myPlayer1.duration; 
+              actTime=myPlayer1.currentTime;
+              newTime=duration-actTime;
+              myPlayer2.currentTime=newTime;
+              
+            }  else if (rate < 0.0) {
+              if (direction!=-1) { 
+                 hideOverlay(); 
+                 direction=-1;
+                 myPlayer2.volume=1.0;
+                 myPlayer1.volume=0.0;
+              }
+              myPlayer2.playbackRate = -rate;
+              duration=myPlayer2.duration; 
+              actTime=myPlayer2.currentTime;
+              newTime=duration-actTime;
+              myPlayer1.currentTime=newTime;
+
+            }  else {
+              if (direction!=0) { 
+                 myPlayer1.playbackRate=0.0;
+                 myPlayer2.playbackRate=0.0;
+              }
+            }
+         };
+
+         ws.onclose = function() {           
+            // websocket is closed.
+            console.log("Connection closed.");
+         };
+      } else {      
+         // The browser doesn't support WebSocket
+         alert("WebSocket NOT supported by your Browser!");
+      }
+   }
+   
+  var slider = document.getElementById("speedRange");
+  var output = document.getElementById("actSpeed");
+  output.innerHTML = slider.value;
+
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+    myPlayer1.playbackRate = this.value/100;  
+  }
+
+  InitWebSocket();
+
+
+</script>
+
+
+<button onclick="fwdClick()"> forward </button>
+<button onclick="backClick()"> backward </button>
+
+</body>
+</html>
+

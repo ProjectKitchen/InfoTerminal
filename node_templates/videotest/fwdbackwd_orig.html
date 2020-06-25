@@ -1,0 +1,62 @@
+
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<h1>Video Forward Backward Demo</h1>
+<script>
+
+function fwdClick(){
+   console.log("forward!"); 
+   duration=document.getElementById("player1").duration; 
+   actTime=document.getElementById("player1").currentTime;
+   newTime=duration-actTime;
+   console.log("acttime=" + actTime +" / newTime="+newTime); 
+   document.getElementById("player1").pause(); 
+   document.getElementById("player2").currentTime=newTime;
+   setTimeout(function(){ 
+       document.getElementById("ovl").style.opacity = "0.0";
+       document.getElementById("player2").play();  
+   }, 250);
+}
+
+function backClick(){ 
+   console.log("back!"); 
+   duration=document.getElementById("player2").duration; 
+   actTime=document.getElementById("player2").currentTime;
+   newTime=duration-actTime;
+   console.log("acttime=" + actTime +" / newTime="+newTime); 
+   document.getElementById("player2").pause(); 
+   document.getElementById("player1").currentTime=newTime;
+   setTimeout(function(){ 
+       document.getElementById("ovl").style.opacity = "1.0";
+       document.getElementById("player1").play();  
+   }, 250);
+
+
+}
+
+
+</script>
+
+
+<button onclick="fwdClick()"> forward </button>
+<input id="btn_back" type="button" value="backwards" onclick="backClick();" />
+
+<div class="outer-container">
+    <div class="inner-container">
+        <div id="ovl" class="video-overlay" >
+            <video id="player1" src="Big_Buck_Bunny_reverse.webm" loop></video> 
+        </div>
+        <video id="player2" src="Big_Buck_Bunny.webm" autoplay loop></video> 
+    </div>
+</div>
+
+
+
+</body>
+</html>
+

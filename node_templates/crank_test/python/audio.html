@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!-- <video width="640" height="480" autoplay>   -->
+
+
+<div style="text-align:center"> 
+  <button onclick="playPause()">Play/Pause</button> 
+  <br><br>
+  <video id="audio1" autoplay>
+  <source src="1.wav" type="audio/wav">
+    Your browser does not support HTML5 media.
+  </video>
+  <video id="audio2" autoplay>
+  <source src="2.wav" type="audio/wav">
+    Your browser does not support HTML5 media.
+  </video>
+  <p></p>
+  <input type="range" min="-150" max="150" value="0" id="speedRange">
+  <p>Playback-Speed: <span id="actSpeed"></span></p>  
+</div> 
+
+<script> 
+
+  var myAudio1 = document.getElementById("audio1"); 
+  myAudio1.mozPreservesPitch = false;
+  myAudio1.loop=true; 
+  myAudio1.volume=0.0; 
+  myAudio1.play(); 
+  var myAudio2 = document.getElementById("audio2"); 
+  myAudio2.mozPreservesPitch = false;
+  myAudio2.loop=true; 
+  myAudio2.volume=0.0; 
+  myAudio2.play(); 
+
+  function playPause() { 
+    if (myAudio1.paused) { 
+      myAudio1.play(); 
+      }
+    else 
+      myAudio1.pause(); 
+  } 
+
+   function InitWebSocket() {
+      
+      if ("WebSocket" in window) {
+         // Let us open a web socket
+         var ws = new WebSocket("ws://localhost:8765");
+         console.log("Websocket opened");
+         ws.onopen = function() {     
+            // Web Socket is connected, send data using send()
+            ws.send("hello server!");
+            console.log("hello-message sent");
+         };
+
+         ws.onmessage = function (evt) { 
+            var received_msg = evt.data;
+            console.log("received:" + received_msg);
+            rate = parseFloat(received_msg);
+            if (rate>0.0) {
+              myAudio1.volume=1.0;
+              myAudio2.volume=0.0;
+              myAudio1.playbackRate = rate;
+              slider.value=rate*100;
+              output.innerHTML=rate*100;
+            }  else if (rate < 0.0) {
+              myAudio2.volume=1.0;
+              myAudio1.volume=0.0;
+              myAudio2.playbackRate = -rate;
+              slider.value=rate*100;
+              output.innerHTML=rate*100;
+            }  else {
+              myAudio1.volume=0.0;
+              myAudio2.volume=0.0;
+              slider.value=0;
+              output.innerHTML=0;
+            }
+         };
+
+         ws.onclose = function() {           
+            // websocket is closed.
+            console.log("Connection closed.");
+         };
+      } else {      
+         // The browser doesn't support WebSocket
+         alert("WebSocket NOT supported by your Browser!");
+      }
+   }
+   
+  var slider = document.getElementById("speedRange");
+  var output = document.getElementById("actSpeed");
+  output.innerHTML = slider.value;
+
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+    myAudio.playbackRate = this.value/100;  
+  }
+
+  InitWebSocket();
+
+</script> 
+</body>
+</html>
