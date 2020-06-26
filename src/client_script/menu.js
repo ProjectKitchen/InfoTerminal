@@ -24,20 +24,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
     websocketMediaControl.addEventListener("message", (ws) => {
         var video = document.getElementsByTagName("video")
         if (mediaplaying == true) {
+            mediaplaying = false
+            
             video[0].pause()
             video[0].style.removeProperty("position")
             video[0].style.setProperty("z-index", "-1")
-            mediaplaying = false
+            video[0].style.visibility = "hidden"
+            
         } else {
+            mediaplaying = true
+            video[0].style.visibility = "visible"
             video[0].style.setProperty("position", "absolute")
             video[0].style.setProperty("z-index", "999")
             video[0].play()
-            mediaplaying = true
         }
     })
     websocketMediaControl.addEventListener("open", (ws) => {
         var videoTag = document.getElementsByTagName("video")
         if (videoTag.length > 0) {
+            videoTag[0].style.visibility = "hidden"
             websocketMediaControl.send(true)
         }
         else {

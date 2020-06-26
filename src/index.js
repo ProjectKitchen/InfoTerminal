@@ -77,9 +77,9 @@ app.ws('/startup', function (ws, req) {
             idlemode = false
         }
     })
-        buttons.Redled.writeSync(0);
-        buttons.Yellowled.writeSync(0);
-        buttons.Greenled.writeSync(0);
+        buttons.Redled.writeSync(1);
+        buttons.Yellowled.writeSync(1);
+        buttons.Greenled.writeSync(1);
 });
 
 function handleCordInput(data) {
@@ -96,11 +96,11 @@ const server = app.listen(port, function () {
 function playMedia() {
     if (hasmedia == true) {
         if (isplaying == false) {
-            websocketMediaControl.send("do")
             isplaying = true
-        } else {
             websocketMediaControl.send("do")
+        } else {
             isplaying = false
+            websocketMediaControl.send("do")
         }
     }
 }
@@ -168,9 +168,9 @@ function goSleepMode() {
         idlemode = true
         soundplaying.playSound("../audio/exit.wav")
         websocketReload.send("/websites/01_robox.html")
-         buttons.Redled.writeSync(0);
-        buttons.Yellowled.writeSync(0);
-        buttons.Greenled.writeSync(0);
+         buttons.Redled.writeSync(1);
+        buttons.Yellowled.writeSync(1);
+        buttons.Greenled.writeSync(1);
         
     }
 }
@@ -178,34 +178,35 @@ function goSleepMode() {
 
 function enterButtonStatus(status){
     if(status === true){
-        if (buttons.Yellowled.readSync() === 0){
-        buttons.Yellowled.writeSync(1);
+        if (buttons.Yellowled.readSync() === 1){
+        buttons.Yellowled.writeSync(0);
         }
     }else{
-        buttons.Yellowled.writeSync(0);
+        buttons.Yellowled.writeSync(1);
     }
 }
 
 function exitButtonStatus(status){
     
     if(status === true){
-         if (buttons.Redled.readSync() === 0){
-        buttons.Redled.writeSync(1);}
+         if (buttons.Redled.readSync() === 1){
+        buttons.Redled.writeSync(0);}
     }else{
-        buttons.Redled.writeSync(0);
+        buttons.Redled.writeSync(1);
     }
 }
 
 function mediaButtonStatus(status){
     if(status === true){
-        if (buttons.Greenled.readSync() === 0){
-        buttons.Greenled.writeSync(1);}
+        if (buttons.Greenled.readSync() === 1){
+        buttons.Greenled.writeSync(0);}
     }else{
-        buttons.Greenled.writeSync(0);
+        buttons.Greenled.writeSync(1);
     }
 }
 
 buttons.Enterbutton.watch(function (err, value) { 
+   console.log("enter",value)
   if (err) { 
     console.error('There was an error', err); 
   return;
@@ -219,19 +220,37 @@ buttons.Exitbutton.watch(function (err, value) {
     console.error('There was an error', err); 
   return;
   }
+  console.log("exit",value)
    pageChangeExit();
   
 });
 
+var playingTimeout = false
 buttons.Playbutton.watch(function (err, value) { 
   if (err) { 
     console.error('There was an error', err); 
   return;
   }
-   playMedia();
+    if(playingTimeout == false){
+   playMedia()
+   playingTimeout = true
+    setTimeout(() => { playingTimeout = false }, 500)
+}
 });
 
 var crank = require('./crankshaft.js')
+var maxPosition = 75
+var currentPos = 0
+crank.Crankshaftpos.on('event',function(pos){
+    currentPos = pos % maxPosition
+    if(currentPos >= maxPosition){
+        currentPos = 0
+    }else if(currentPos <= (-maxPosition)){
+        currentPos = 0
+    }
+   // console.log("position",currentPos)
+    })
+
 crank.Crankshaftevent.on('event',function(speed){
 if(idlemode == false){
    if (speed > 7)  {pageChangeForward(); }

@@ -24,3 +24,10 @@ body{
 	border:0px;
 	z-index:2
 	}
+video{
+	position:absolute;
+	top:505;
+	left:600;
+	border:0px;
+	}
+

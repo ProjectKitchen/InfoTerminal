@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   var startvideo = document.getElementById("startvideo");
   startvideo.mozPreservesPitch = false;
   startvideo.loop = true;
-  startvideo.volume = 0.0;
+  startvideo.volume = 1;
   startvideo.playbackRate = 0.5
   var websocketStartup = new WebSocket('ws://' + location.hostname + ':' + location.port + '/startup');
 
@@ -13,34 +13,68 @@ document.addEventListener("DOMContentLoaded", function (event) {
   var startupInProgress = false
   function handleIncomingMessage(ws) {
     var rate = ws.data
-    console.log(rate);
     if (startupInProgress == false) {
       if (rate < 0) {
         rate = -rate;
       }
+      console.log(rate)
       if (rate >= 10) {
+        clearTimeout(fadeOutTimeout)
+        fadeOutTimeout = undefined
         startup++;
-        soundFadeIn();
+        //soundFadeIn();
         playbackFadein();
+      }else{
+        console.log("stop")
+        fadeOut()
       }
-      if (startup > 100) {
+      if (startvideo.playbackRate >= 1.2) {
         startupInProgress = true
         startvideo.pause()
+        
         startTransitionVideo()
       }
     }
   }
+  
+  var fadeOutTimeout = undefined
+function fadeOut(){
+    if(fadeOutTimeout === undefined){
+      fadeOutTimeout = setTimeout(function(){
+      if(startvideo.volume >= 0.05){
+        //startvideo.volume -= 0.05
+        //if(vol >= 0.20){
+       // vol = startvideo.volume
+     // }
+      }
+      if(startvideo.playbackRate >= 0.25){
+        startvideo.playbackRate -= 0.05
+      if(playbackRateCur >= 0.20){
+        playbackRateCur = startvideo.playbackRate
+      }
+      }
+      if(startup > 0){
+        startup--
+      }
+      fadeOutTimeout = undefined
+  },200)
+  }
+}
+  
   // This is for the gradual increase of idle mode animation sound when the system is initially started
   // Initial volume of 0.20
   // Make sure it's a multiple of 0.05
   var vol = 0.20;
   var interval = 200;
   var fadeinSound = undefined
-  function soundFadeIn() {
+  function soundFadeIn(fadeIn) {
     if (fadeinSound == undefined) {
       fadeinSound = setTimeout(
         function () {
-          vol += 0.05;// This works as long as you start with a multiple of 0.05!
+          if(fadeIn == true){
+            vol += 0.05;
+            }
+          
           if (vol <= 1) {
             startvideo.volume = vol;
             fadeinSound = undefined
@@ -51,15 +85,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }, interval);
     }
   }
-  var playbackRateCur = 0.50;
+  var playbackRateCur = 0.2;
   var interval = 200;
   var fadeinPlayback = undefined
   function playbackFadein() {
     if(fadeinPlayback == undefined){
     fadeinPlayback = setTimeout(
       function () {
-        // This works as long as you start with a multiple of 0.05!
-        if (playbackRateCur < 1.5) {
+        if (playbackRateCur < 1.2) {
           playbackRateCur += 0.05;
           startvideo.playbackRate = playbackRateCur;
           fadeinPlayback = undefined
@@ -84,8 +117,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
     vid.style.setProperty("position", "absolute")
     vid.style.setProperty("z-index", "999")
     document.body.appendChild(vid)
-    vid.volume = 1.0;
-    vid.play();
+    vid.volume = 1;
+    setTimeout(function(){
+      vid.play();
+    startvideo.style.visibility = "hidden"
     vid.addEventListener('ended', function (e) {
       vid.pause()
       vid.currentTime = 0;
@@ -94,5 +129,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         document.body.removeChild(vid);
       }, 50);
     }, true);
+      },500)
+    
   }
 })

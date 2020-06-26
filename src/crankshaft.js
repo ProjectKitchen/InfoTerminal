@@ -2,9 +2,10 @@ const Gpio = require('onoff').Gpio;
 const EventEmitter = require('events')
 const myemitter = new EventEmitter();
 
+const myPosEmitter = new EventEmitter();
 
 exports.Crankshaftevent = myemitter;
-
+exports.Crankshaftpos = myPosEmitter
 const SignalA = new Gpio(23, 'in', 'both');
 const SignalB = new Gpio(24, 'in', 'both');
 var position=0;
@@ -46,5 +47,9 @@ function checkSpeed() {
   myemitter.emit('event',speed);
 }
 
+function sendPos(){
+myPosEmitter.emit('event', position)
+}
 
+setInterval(sendPos,50)
 setInterval(checkSpeed,200);
