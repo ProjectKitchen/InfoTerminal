@@ -31,6 +31,8 @@ var sleepModeTime = 600000
 //Testing
 //var sleepModeTime = 6000
 
+var nixie = require('./nixie.js')
+
 app.ws('/reload', function (ws, req) {
     websocketReload = ws;
     if (idlemode == true) {
@@ -47,7 +49,8 @@ app.ws('/reload', function (ws, req) {
     }
     enterButtonStatus(subsites)
     exitButtonStatus(parentSides)
-    
+    var nixiInput = currentpages[currentPageIndex].nixitubes
+    nixie.setNixieNumber(nixiInput)
     reloading = false
     if (timer == undefined) { timer = setTimeout(function () { goSleepMode() }, sleepModeTime) }
     ws.on("close", (error, connection) => { reloading = true; })
