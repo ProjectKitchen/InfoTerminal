@@ -9,8 +9,8 @@
     border: 0px solid blue;
     display: inline-block;
     position: absolute;
-    left: 350px;
-    top: 200px;
+    left: 140px;
+    top: 100px;
     margin: 0px;
     padding: 0px 0px;
     background-color: black;
@@ -28,6 +28,6 @@
 }
 
 video {
-    width: 200%;
-    height: 200%;
+    width: 150%;
+    height: 150%;
 }

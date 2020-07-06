@@ -5,8 +5,8 @@ var red = '\u001b[41m \u001b[0m';
 
 
 
-const SignalA = new Gpio(20, 'in', 'both');
-const SignalB = new Gpio(16, 'in', 'both');
+const SignalA = new Gpio(23, 'in', 'both');
+const SignalB = new Gpio(24, 'in', 'both');
 var position=0;
 var state=SignalA.readSync()+SignalB.readSync() * 2;
 

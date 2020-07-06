@@ -4,8 +4,8 @@ import time
 # GPIO-Bezeichnung BCM stezen
 GPIO.setmode(GPIO.BCM)
 
-input_a = 20  # Signal A: GPIO 20
-input_b = 16  # Signal B: GPIO 16
+input_a = 23  # Signal A: GPIO 23
+input_b = 24  # Signal B: GPIO 24
 
 GPIO.setup(input_a, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # use internal pullup
 GPIO.setup(input_b, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # use internal pullup

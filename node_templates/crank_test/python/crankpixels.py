@@ -5,10 +5,10 @@ from rpi_ws281x import PixelStrip, Color
 
 
 # LED strip configuration:
-LED_COUNT = 14        # Number of LED pixels.
+LED_COUNT = 35        # Number of LED pixels.
 #LED_PIN = 18          # GPIO pin connected to the pixels (18 uses PWM!).
 LED_PIN = 10        # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
-LED_FREQ_HZ = 800000  # LED signal frequency in hertz (usually 800khz)
+LED_FREQ_HZ = 900000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA = 10          # DMA channel to use for generating signal (try 10)
 LED_BRIGHTNESS = 255  # Set to 0 for darkest and 255 for brightest
 LED_INVERT = False    # True to invert the signal (when using NPN transistor level shift)
@@ -22,8 +22,8 @@ strip.begin()
 # GPIO-Mode BCM
 GPIO.setmode(GPIO.BCM)
 
-input_a = 23  # Signal A: GPIO 20
-input_b = 24  # Signal B: GPIO 16
+input_a = 23  # Signal A: GPIO 23
+input_b = 24  # Signal B: GPIO 24
 
 GPIO.setup(input_a, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # use internal pullup
 GPIO.setup(input_b, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # use internal pullup
