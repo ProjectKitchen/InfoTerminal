@@ -23,17 +23,19 @@ var websocketStartup = undefined
 var reloading = true
 var websocketReload
 var websocketMediaControl
+var nixieNumber=0
+var actTimeNumber=0
 
 // 10 min is 600000 ms
-// 5 s in 600000 ms
 var timer = undefined
-var sleepModeTime = 600000
+var sleepModeTime = 9300000
 //Testing
-//var sleepModeTime = 6000
+//var sleepModeTime = 10000
 
 var nixie = require('./nixie.js')
 
 app.ws('/reload', function (ws, req) {
+    console.log (ws);
     websocketReload = ws;
     if (idlemode == true) {
         reloading = true;
@@ -49,11 +51,15 @@ app.ws('/reload', function (ws, req) {
     }
     enterButtonStatus(subsites)
     exitButtonStatus(parentSides)
-    var nixiInput = currentpages[currentPageIndex].nixitubes
-    nixie.setNixieNumber(nixiInput)
+    nixieNumber = currentpages[currentPageIndex].nixitubes
+    if (nixieNumber > 0) {
+        nixie.setNixieNumber(nixieNumber);
+        actTimeNumber=0;
+    }
     reloading = false
     if (timer == undefined) { timer = setTimeout(function () { goSleepMode() }, sleepModeTime) }
-    ws.on("close", (error, connection) => { reloading = true; })
+    heartBeatTimer = setInterval(function () { sendHeartbeat() }, 1000) 
+    ws.on("close", (error, connection) => { console.log ("WSReload closed");clearInterval(heartBeatTimer); reloading = true; })
 });
 
 
@@ -90,6 +96,8 @@ function handleCordInput(data) {
         websocketStartup.send(data)
     }
 }
+
+
 
 var port = 8080
 const server = app.listen(port, function () {
@@ -163,6 +171,23 @@ function pageChangeExit() {
     }
 }
 
+function sendHeartbeat() {
+    try {
+        websocketReload.send("*/");
+        var date=new Date();
+        
+        if (nixieNumber==0) {
+           if (date.getHours()*100+date.getMinutes() != actTimeNumber) {
+               actTimeNumber= date.getHours()*100+date.getMinutes();
+               nixie.setNixieNumber(actTimeNumber);
+           }
+       }
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
 function goSleepMode() {
     if (reloading == false) {
         reloading = true
@@ -171,9 +196,16 @@ function goSleepMode() {
         idlemode = true
         soundplaying.playSound("../audio/exit.wav")
         websocketReload.send("/websites/01_robox.html")
-         buttons.Redled.writeSync(1);
+        buttons.Redled.writeSync(1);
         buttons.Yellowled.writeSync(1);
         buttons.Greenled.writeSync(1);
+
+         currentPageIndex = 0;
+         rootpages = pagesystem.parseJson("./sitespaths.json")
+         currentpages = rootpages
+         pagehistory = []
+         pagehistoryindex = []
+        
         
     }
 }
@@ -228,41 +260,40 @@ buttons.Exitbutton.watch(function (err, value) {
   
 });
 
-var playingTimeout = false
+var playingTimeout = false;
 buttons.Playbutton.watch(function (err, value) { 
-  if (err) { 
-    console.error('There was an error', err); 
-  return;
-  }
+    if (err) { 
+        console.error('There was an error', err); 
+    return;
+    }
     if(playingTimeout == false){
-   playMedia()
-   playingTimeout = true
-    setTimeout(() => { playingTimeout = false }, 500)
-}
+        playMedia()
+        playingTimeout = true
+        setTimeout(() => { playingTimeout = false }, 500)
+    }
 });
 
 var crank = require('./crankshaft.js')
-var maxPosition = 75
+var pageTurnPosition = 25
 var currentPos = 0
 crank.Crankshaftpos.on('event',function(pos){
-    currentPos = pos % maxPosition
-    if(currentPos >= maxPosition){
-        currentPos = 0
-    }else if(currentPos <= (-maxPosition)){
-        currentPos = 0
+    if (idlemode==false) {
+        // console.log("position",pos)
+        if (pos-currentPos > pageTurnPosition) {
+           pageChangeForward();
+           currentPos=pos; 
+        }
+        else if (pos-currentPos < -pageTurnPosition){
+            pageChangeBackwards();
+            currentPos=pos; 
+        }
     }
-   // console.log("position",currentPos)
-    })
+})
 
 crank.Crankshaftevent.on('event',function(speed){
-if(idlemode == false){
-   if (speed > 7)  {pageChangeForward(); }
-   else if(speed < -7){
-     pageChangeBackwards();}
-    }else {
-        handleCordInput(speed)
-        }
-
+    if(idlemode == true){
+        handleCordInput(speed);
+    }
 });
 
 

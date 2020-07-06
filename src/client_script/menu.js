@@ -2,15 +2,20 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     var websocketReloading = new WebSocket('ws://' + location.hostname + ':' + location.port + '/reload');
     var load = false;
+    var heartbeat=0;
 
     websocketReloading.addEventListener("message", handleIncomingMessage)
 
     function handleIncomingMessage(ws) {
-        console.log(ws)
+        // console.log(ws)
+        if (ws.data.charAt(0) == '*') {
+            heartbeat=0;
+            console.log ("heartbeat pace!");
+        } else 
         if (ws.data.charAt(0) == 's') {
             load = true
             goSleepMode()
-        }
+        } else 
         if (load == false) {
             load = true
             var newfile = ws.data
@@ -49,6 +54,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
             websocketMediaControl.send(false)
         }
     })
+    
+    
+    setInterval(function(){
+        heartbeat=heartbeat+1;
+        console.log("checking heartbeat ..." + heartbeat)
+       // if(websocketReloading != undefined){
+       //     if(websocketReloading.readyState == 3) // 3 is closed
+            if (heartbeat > 3)
+            {
+                console.log("problem found, trying to reload page!")
+                location.reload()
+                heartbeat=0;
+            }
+  //      }
+    }, 1000)
+    
 })
 
 function getSound(src) {
