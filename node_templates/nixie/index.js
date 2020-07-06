@@ -5,7 +5,7 @@ const { Gpio } = require( 'onoff' );
 const CS1 = new Gpio( '25',  'out' );
 const CS2 = new Gpio( '7', 'out' );
 const CS3 = new Gpio( '1',  'out' );
-const CS4 = new Gpio( '12', 'out' );
+const CS4 = new Gpio( '16', 'out' );
 
 CS1.writeSync( 1 ); // 1: disable chip select signal! 
 CS2.writeSync( 1 );
@@ -97,9 +97,7 @@ displayNixieNumber();
 seconds=1234;
 setInterval(() => { seconds++; fadeNixieNumber(seconds,7); }, 1000);
 
-//setTimeout(() => { fading=1; fade(-1,10); }, 3000);
-//setTimeout(() => { fading=1; fade(1,10); }, 6000);
 
-//setTimeout(() => { fadeNixieNumber(23); }, 1000);
-//setTimeout(() => { fadeNixieNumber(48); }, 5000);
-
+exports.setNixieNumber = function(number){
+	
+	fadeNixieNumber(number,7)}
