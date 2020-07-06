@@ -10,6 +10,13 @@ table,img{border-width:0px}
 .zwischen{width:38px}
 .links{padding-top:95px}
 .rechts{padding-top:38px}
+video{
+	position:absolute;
+	top: -72px;
+left: 59px;
+width: 882px;
+height: 900px;
+	}
 
 
 
