@@ -14,7 +14,7 @@ CS4.writeSync( 1 );
 
 var spi = SPI.initialize("/dev/spidev1.0");
 // SPI0.0: MOSI [BCM 10, physical pin 19] 
-
+// spi.dataMode(SPI_NO_CS);
 
 const redLed = 20;
 const greenLed = 0;
@@ -25,6 +25,7 @@ actNixieNumber=0;
 nextNixieNumber=-1;
 intensity=127;
 fading=0;
+fadeTimer=undefined;
 
 
 var setNixie = function(cs, d, i) { 
@@ -96,5 +97,10 @@ function fadeNixieNumber(n,speed) {
 displayNixieNumber();
 
 exports.setNixieNumber = function(number){
-	console.log("nixie:",number)
-	fadeNixieNumber(number,7)}
+	if (fadeTimer!=undefined) {
+		clearInterval (fadeTimer);
+		intensity=127;
+	}
+    console.log("nixie:",number);
+    fadeNixieNumber(number,20);
+}
