@@ -120,7 +120,7 @@ def updateNeopixels():
     if (abs(rate)<0.15):
       rate=0;
     print("fadeout:" + str(fadeoutCounter) + " speed:" + str(rate));
-    server.send_message_to_all(str(rate*1.5));
+    server.send_message_to_all(str(rate*2.5));
   return;
   
   
@@ -155,7 +155,7 @@ def fadePixels():
     except NameError:
       print ("server not defined by now .... ")
     else:
-      server.send_message_to_all(str(rate*1.5));
+      server.send_message_to_all(str(rate*2.5));
     
   threading.Timer(0.05, fadePixels).start()
 
