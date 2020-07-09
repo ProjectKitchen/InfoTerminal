@@ -9,15 +9,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   websocketStartup.addEventListener("message", handleIncomingMessage)
 
+  setInterval(function(){ console.log(websocketStartup)},5000)
+
+  var heartbeat=0;
   var startup = 0
   var startupInProgress = false
   function handleIncomingMessage(ws) {
     var rate = ws.data
+    if (ws.data.charAt(0) == '*') {
+            heartbeat=0;
+            console.log ("heartbeat pace!");
+        } else{
     if (startupInProgress == false) {
       if (rate < 0) {
         rate = -rate;
       }
-      console.log(rate)
+      
       if (rate >= 10) {
         clearTimeout(fadeOutTimeout)
         fadeOutTimeout = undefined
@@ -25,27 +32,24 @@ document.addEventListener("DOMContentLoaded", function (event) {
         //soundFadeIn();
         playbackFadein();
       }else{
-        console.log("stop")
+        
         fadeOut()
       }
       if (startvideo.playbackRate >= 1.2) {
         startupInProgress = true
-        startvideo.pause()
+        
         
         startTransitionVideo()
       }
     }
   }
+}
   
   var fadeOutTimeout = undefined
 function fadeOut(){
     if(fadeOutTimeout === undefined){
       fadeOutTimeout = setTimeout(function(){
       if(startvideo.volume >= 0.05){
-        //startvideo.volume -= 0.05
-        //if(vol >= 0.20){
-       // vol = startvideo.volume
-     // }
       }
       if(startvideo.playbackRate >= 0.25){
         startvideo.playbackRate -= 0.05
@@ -112,7 +116,7 @@ function fadeOut(){
   // adding the video element to the DOM, to play the starting animation
   function startTransitionVideo() {
     var vid = document.createElement('video');
-    vid.src = '../../video/start.m4v';
+    vid.src = '../../video/start.mp4';
     vid.load();
     vid.style.setProperty("position", "absolute")
     vid.style.setProperty("z-index", "999")
@@ -120,6 +124,7 @@ function fadeOut(){
     vid.volume = 1;
     setTimeout(function(){
       vid.play();
+	startvideo.pause()
     startvideo.style.visibility = "hidden"
     vid.addEventListener('ended', function (e) {
       vid.pause()
@@ -132,4 +137,19 @@ function fadeOut(){
       },500)
     
   }
+  
+  setInterval(function(){
+        heartbeat=heartbeat+1;
+        console.log("checking heartbeat ..." + heartbeat)
+       // if(websocketReloading != undefined){
+       //     if(websocketReloading.readyState == 3) // 3 is closed
+            if (heartbeat > 3)
+            {
+                console.log("problem found, trying to reload page!")
+                location.reload()
+                heartbeat=0;
+            }
+  //      }
+    }, 1000)
+  
 })

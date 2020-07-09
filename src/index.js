@@ -69,7 +69,11 @@ var mediainput = true;
 app.ws('/media', function (ws, req) {
     websocketMediaControl = ws;
     mediainput = false;
-    ws.on("close", (err, connection) => { mediainput = true; hasmedia = false })
+    ws.on("close", (err, connection) => { 
+        mediainput = true; 
+        hasmedia = false;
+        isplaying = false;}
+        )
     ws.on("message", (message) => {
         let status = false
         if (message == "true") { status = true }
@@ -78,15 +82,17 @@ app.ws('/media', function (ws, req) {
     })
 });
 
+var heartBeatTimerStartup
 app.ws('/startup', function (ws, req) {
     websocketStartup = ws;
-    ws.on("close", (err, connection) => { websocketStartup = undefined })
+    ws.on("close", (err, connection) => { websocketStartup = undefined; clearInterval(heartBeatTimerStartup) })
     ws.on("message", (message) => {
         if (message == "start") {
             idlemode = false
         }
     })
-        buttons.Redled.writeSync(1);
+    heartBeatTimerStartup = setInterval(function () { sendHeartbeatStartup() }, 1000) 
+    buttons.Redled.writeSync(1);
         buttons.Yellowled.writeSync(1);
         buttons.Greenled.writeSync(1);
 });
@@ -104,20 +110,41 @@ const server = app.listen(port, function () {
     console.log('App listening on port ' + port + '!');
 });
 
+var blinkInterval = undefined
 function playMedia() {
     if (hasmedia == true) {
-        if (isplaying == false) {
+        if (isplaying === false) {
             isplaying = true
-            websocketMediaControl.send("do")
+            websocketMediaControl.send("true")
+            buttons.Redled.writeSync(1);
+            buttons.Greenled.writeSync(1);
+            
+            blinkInterval = setInterval(function(){
+                if (buttons.Yellowled.readSync() === 0) { //check the pin state, if the state is 0 (or off)
+                buttons.Yellowled.writeSync(1); //set pin state to 1 (turn LED on)
+              } else {
+                buttons.Yellowled.writeSync(0); //set pin state to 0 (turn LED off)
+              }
+                }, 250);
+            soundplaying.playSound("../audio/enter.wav")
         } else {
             isplaying = false
-            websocketMediaControl.send("do")
+            websocketMediaControl.send("false")
+            clearInterval(blinkInterval); // Stop blink intervals
+            buttons.Yellowled.writeSync(0);
+            if (currentpages[currentPageIndex].subsites.length > 0) {
+                 buttons.Greenled.writeSync(0);
+                }
+                if (pagehistory.length > 0) {
+                    buttons.Redled.writeSync(0);
+                    }
+                     soundplaying.playSound("../audio/exit.wav")
         }
     }
 }
 
 function pageChangeForward() {
-    if (reloading == false) {
+    if (reloading == false && isplaying === false) {
         reloading = true
         timer.refresh()
         currentPageIndex++;
@@ -130,7 +157,7 @@ function pageChangeForward() {
 }
 
 function pageChangeBackwards() {
-    if (reloading == false) {
+    if (reloading == false && isplaying === false) {
         reloading = true
         timer.refresh()
         currentPageIndex--;
@@ -143,7 +170,7 @@ function pageChangeBackwards() {
 }
 
 function pageChangeEnter() {
-    if (reloading == false) {
+    if (reloading == false && isplaying === false) {
         if (currentpages[currentPageIndex].subsites.length > 0) {
             reloading = true
             timer.refresh()
@@ -159,7 +186,7 @@ function pageChangeEnter() {
 }
 
 function pageChangeExit() {
-    if (reloading == false) {
+    if (reloading == false && isplaying === false) {
         if (pagehistory.length > 0) {
             reloading = true
             timer.refresh()
@@ -171,16 +198,33 @@ function pageChangeExit() {
     }
 }
 
+var seconds=0
+
 function sendHeartbeat() {
     try {
         websocketReload.send("*/");
         var date=new Date();
+        seconds = (seconds +1) % 10
         
-        if (nixieNumber==0) {
-           if (date.getHours()*100+date.getMinutes() != actTimeNumber) {
-               actTimeNumber= date.getHours()*100+date.getMinutes();
-               nixie.setNixieNumber(actTimeNumber);
-           }
+        if ((nixieNumber==0) && (seconds==0)) {
+           actTimeNumber= date.getHours()*100+date.getMinutes();
+           nixie.setNixieNumber(actTimeNumber);
+       }
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+function sendHeartbeatStartup() {
+    try {
+        websocketStartup.send("*/");
+        var date=new Date();
+        seconds = (seconds +1) % 10
+        
+        if ((nixieNumber==0) && (seconds==0)) {
+           actTimeNumber= date.getHours()*100+date.getMinutes();
+           nixie.setNixieNumber(actTimeNumber);
        }
     }
     catch (error) {
@@ -213,11 +257,11 @@ function goSleepMode() {
 
 function enterButtonStatus(status){
     if(status === true){
-        if (buttons.Yellowled.readSync() === 1){
-        buttons.Yellowled.writeSync(0);
+        if (buttons.Greenled.readSync() === 1){
+        buttons.Greenled.writeSync(0);
         }
     }else{
-        buttons.Yellowled.writeSync(1);
+        buttons.Greenled.writeSync(1);
     }
 }
 
@@ -233,10 +277,10 @@ function exitButtonStatus(status){
 
 function mediaButtonStatus(status){
     if(status === true){
-        if (buttons.Greenled.readSync() === 1){
-        buttons.Greenled.writeSync(0);}
+        if (buttons.Yellowled.readSync() === 1){
+        buttons.Yellowled.writeSync(0);}
     }else{
-        buttons.Greenled.writeSync(1);
+        buttons.Yellowled.writeSync(1);
     }
 }
 

@@ -1,6 +1,6 @@
 const Gpio = require('onoff').Gpio; 
-var L_YellowLedPin = new Gpio(13, 'out');
-var M_GreenLedPin = new Gpio(18, 'out');
+var M_GreenLedPin = new Gpio(13, 'out');
+var L_YellowLedPin = new Gpio(18, 'out');
 var R_RedLedPin = new Gpio(12, 'out'); 
 
 

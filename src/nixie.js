@@ -102,5 +102,5 @@ exports.setNixieNumber = function(number){
 		intensity=127;
 	}
     console.log("nixie:",number);
-    fadeNixieNumber(number,20);
+    fadeNixieNumber(number,7);
 }

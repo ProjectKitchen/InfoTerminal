@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
+    var websocketMediaControl = new WebSocket('ws://' + location.hostname + ':' + location.port + '/media');
+    var mediaplaying = false;
     var websocketReloading = new WebSocket('ws://' + location.hostname + ':' + location.port + '/reload');
     var load = false;
     var heartbeat=0;
@@ -7,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     websocketReloading.addEventListener("message", handleIncomingMessage)
 
     function handleIncomingMessage(ws) {
-        // console.log(ws)
+        if(mediaplaying === false){
         if (ws.data.charAt(0) == '*') {
             heartbeat=0;
             console.log ("heartbeat pace!");
@@ -22,15 +24,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
             location.replace(location.origin + "/" + newfile)
         }
     }
+    }
 
-    var websocketMediaControl = new WebSocket('ws://' + location.hostname + ':' + location.port + '/media');
-    var mediaplaying = false;
 
     websocketMediaControl.addEventListener("message", (ws) => {
         var video = document.getElementsByTagName("video")
         if (mediaplaying == true) {
             mediaplaying = false
-            
+    
             video[0].pause()
             video[0].style.removeProperty("position")
             video[0].style.setProperty("z-index", "-1")
@@ -38,11 +39,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
             
         } else {
             mediaplaying = true
+            
             video[0].style.visibility = "visible"
             video[0].style.setProperty("position", "absolute")
             video[0].style.setProperty("z-index", "999")
             video[0].play()
         }
+        console.log(mediaplaying)
     })
     websocketMediaControl.addEventListener("open", (ws) => {
         var videoTag = document.getElementsByTagName("video")

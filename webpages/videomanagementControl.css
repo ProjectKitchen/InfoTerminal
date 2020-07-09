@@ -1,0 +1,33 @@
+.outer-container {
+    border: 1px dotted black;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: black;
+}
+.inner-container {
+    border: 0px solid blue;
+    display: inline-block;
+    position: absolute;
+    left: 140px;
+    top: 100px;
+    margin: 0px;
+    padding: 0px 0px;
+    background-color: black;
+}
+
+.video-overlay {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin: 0px;
+    padding: 0px 0px;
+    color: #FFF;
+    background-color: black;
+    opacity: 0.0;
+}
+
+video {
+    width: 150%;
+    height: 150%;
+}

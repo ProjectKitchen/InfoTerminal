@@ -64,14 +64,17 @@ app.post('/newsite', addSide.array("picture[]", 4),
         console.log(menuselect)
         var finishedFilename = filename + "_"  + date.getTime() + '.html'
         var finishedFilePath = contentfolderPath+ menuselect.substring(0, menuselect.length - 5)+ "/" + finishedFilename
+        finishedFilePath = finishedFilePath.replace('\\','/')
         finishedFilename = menuselect.substring(0, menuselect.length - 5) + "\\" + finishedFilename
         var imagepaths = []
         
         req.files.forEach(element => {
+            var newPathTmp = contentfolderPath+ menuselect.substring(0, menuselect.length - 5)+ "/"+ element.filename
+            newPathTmp = newPathTmp.replace('\\','/')
             imagepaths.push(
                 {
-                   newpath : contentfolderPath+ menuselect.substring(0, menuselect.length - 5)+ "/"+ element.filename,
-                    oldpath: element.path,
+                   newpath : newPathTmp,
+                    oldpath: "./"+element.path,
                     contentpath: "/"+menuselect.substring(0, menuselect.length - 5)+ "/"+ element.filename,
                     filename: element.filename
                 }
@@ -79,9 +82,10 @@ app.post('/newsite', addSide.array("picture[]", 4),
         });
         fs.readFile(indextemplatePath, 'utf-8', function (err, data) {
             if (err) throw err;
-
+            
             var images = "";
             if(imagepaths.length > 0){
+                
                 imagepaths.forEach((paths) => {
                     fs.rename(paths["oldpath"], paths["newpath"], function (err) {
                         if (err) throw err
