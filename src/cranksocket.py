@@ -12,7 +12,10 @@ def new_client(client, server):
 def new_message(client, server, message):
 	print ("message received: " + message);
 
-
+UPDATE_PERIOD = 0.1
+FADEPIXEL_PERIOD = 0.1
+RATE_FACTOR = 1.8
+RATE_MINIMUM = 0.1
 
 # LED strip configuration:
 LED_COUNT = 35        # Number of LED pixels.
@@ -44,6 +47,7 @@ old_position=0;
 pixelpos=0;
 old_pixel=0;
 timestamp = time.time();
+send_timestamp = time.time();
 buf = [0.0 for x in range(80)];
 fadeoutCounter=0;
 
@@ -75,7 +79,9 @@ def update(channel):
 
 
 def updateNeopixels():
-  global position, old_position, pixelpos, old_pixel, timestamp, fadeoutCounter;
+  global position, old_position, pixelpos, old_pixel;
+  global timestamp, send_timestamp, fadeoutCounter;
+  global RATE_FACTOR, RATE_MINIMUM, UPDATE_PERIOD;
 
   change = (position-old_position)/4
   old_position=position;
@@ -104,23 +110,17 @@ def updateNeopixels():
         period=0;
     if (change<0):
         period=-period;
-    # print (period);
-    rate=statistics.mean(buf);
-#    if (abs(rate) < 0.15):
-#      if (period > 0.0):
-#        buf.append(period+3.0);
-#      else:
-#        buf.append(period-3.0);
-#        
-#    else:
-#      buf.append(period);     
     buf.append(period);     
     buf.pop(0);
-    rate=statistics.mean(buf);
-    if (abs(rate)<0.15):
-      rate=0;
-    print("fadeout:" + str(fadeoutCounter) + " speed:" + str(rate));
-    server.send_message_to_all(str(rate*2.5));
+    rate=statistics.mean(buf)*RATE_FACTOR;
+    # print("rate update:" + str(rate));
+
+#    if (abs(rate) < RATE_MINIMUM):
+#      rate=0;
+    if (time.time()-send_timestamp > UPDATE_PERIOD):
+      send_timestamp=time.time()
+      print("send speed update:" + str(rate));
+      server.send_message_to_all(str(rate));
   return;
   
   
@@ -130,7 +130,8 @@ GPIO.add_event_detect(input_b,GPIO.BOTH,callback=update)
 
 
 def fadePixels():
-  global timestamp, fadeoutCounter;
+  global send_timestamp, fadeoutCounter;
+  global RATE_FACTOR, RATE_MINIMUM, FADEPIXEL_PERIOD;
   for i in range (0,LED_COUNT):
     r= (strip.getPixelColor(i) >> 16) & 0xff ;
     g= (strip.getPixelColor(i) >> 8) & 0xff ;
@@ -141,13 +142,18 @@ def fadePixels():
     strip.setPixelColor(i,Color(r,g,b));
   strip.show()
 
-  if (time.time()-timestamp > 0.01):
-    timestamp=time.time()
+  if (time.time()-send_timestamp > UPDATE_PERIOD*2):
+    buf.pop(0);
+    buf.append(0.0);
+    buf.pop(0);
+    buf.append(0.0);
+    buf.pop(0);
+    buf.append(0.0);
     buf.pop(0);
     buf.append(0.0);
     fadeoutCounter+=1;
-    rate=statistics.mean(buf);
-    if (abs(rate)<0.15):
+    rate=statistics.mean(buf)*RATE_FACTOR;
+    if (abs(rate) < RATE_MINIMUM):
       rate=0;
     print("fadeout:" + str(fadeoutCounter) + " speed:" + str(rate));
     try:
@@ -155,15 +161,17 @@ def fadePixels():
     except NameError:
       print ("server not defined by now .... ")
     else:
-      server.send_message_to_all(str(rate*2.5));
+      server.send_message_to_all(str(rate));
+  threading.Timer(FADEPIXEL_PERIOD, fadePixels).start()
     
-  threading.Timer(0.05, fadePixels).start()
 
 fadePixels();
 
 server = WebsocketServer(8765, host='127.0.0.1')
 server.set_fn_new_client(new_client)
 server.set_fn_message_received(new_message)
+
+
 server.run_forever()
 
 

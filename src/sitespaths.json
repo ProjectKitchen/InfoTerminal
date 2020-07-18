@@ -1006,6 +1006,11 @@
         "path": "websites\\04_archiv.html",
         "nixitubes": 0,
         "subsites": [
+        	{   "path":"websites\\04_archiv\\chaplin_moderntimes.html",
+				"nixitubes":0,
+				"subsites":[]
+			},
+
             {
                 "path": "websites\\04_archiv\\01.html",
                 "nixitubes": 0,
@@ -1258,4 +1263,5 @@
             }
         ]
     }
-]
+]	
+	

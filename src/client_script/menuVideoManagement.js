@@ -9,10 +9,10 @@
     websocketReloading.addEventListener("message", handleIncomingMessage)
 
     function handleIncomingMessage(ws) {
-        console.log(ws.data)
+        // console.log(ws.data)
         if (ws.data.charAt(0) == '*') {
             heartbeat=0;
-            console.log ("heartbeat pace!");
+            // console.log ("heartbeat pace!");
         } else 
         if (ws.data.charAt(0) == 's') {
             load = true
@@ -50,16 +50,13 @@
     
     setInterval(function(){
         heartbeat=heartbeat+1;
-        console.log("checking heartbeat ..." + heartbeat)
-       // if(websocketReloading != undefined){
-       //     if(websocketReloading.readyState == 3) // 3 is closed
-            if (heartbeat > 3)
-            {
-                console.log("problem found, trying to reload page!")
-                location.reload()
-                heartbeat=0;
-            }
-  //      }
+        // console.log("checking heartbeat")
+        if (heartbeat > 3)
+        {
+            console.log("hearbest 3 secound not paced - trying to reload page!")
+            location.reload()
+            heartbeat=0;
+        }
     }, 1000)
     
 

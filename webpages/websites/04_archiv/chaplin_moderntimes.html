@@ -1,0 +1,34 @@
+
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/videomanagementControl.css">
+</head>
+<body>
+
+
+
+<div class="outer-container">
+    <div class="inner-container">
+        <div id="ovl" class="video-overlay" >
+            <video id="player1" src="/video/Charlie_Chaplin_Modern_Times_EatingMachine.mp4"  autoplay loop></video> 
+        </div>
+        <video id="player2" src="/video/Charlie_Chaplin_Modern_Times_EatingMachine_reverse.mp4"  loop></video> 
+    </div>
+</div>
+
+<input type="range" min="-150" max="150" value="0" id="speedRange">
+<p>Playback-Speed: <span id="actSpeed"></span></p>  
+<script src="/menuVideoManagement.js"></script>
+<script>
+ 
+
+</script>
+
+
+<button onclick="fwdClick()"> forward </button>
+<button onclick="backClick()"> backward </button>
+
+</body>
+</html>
+
