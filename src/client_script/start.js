@@ -110,7 +110,7 @@ function fadeOut(){
 
   function changeToNormal() {
     websocketStartup.send("start")
-    location.replace(location.origin + "/websites/01_robox.html")
+    location.replace(location.origin + "/websites/01.html")
   }
 
   // adding the video element to the DOM, to play the starting animation

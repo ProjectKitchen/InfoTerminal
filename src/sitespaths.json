@@ -1,207 +1,32 @@
 [
     {
-        "path": "websites\\01_robox.html",
+        "path": "websites\\01.html",
         "nixitubes": 0,
         "subsites": [
             {
-                "path": "websites\\01_robox\\01.html",
+                "path": "websites\\01\\01.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\01_robox\\02.html",
-                "nixitubes": 12,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\03.html",
+                "path": "websites\\01\\02.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\01_robox\\04.html",
+                "path": "websites\\01\\03.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\01_robox\\04a.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\05.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\06.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\07.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\08.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\09.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\10.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\11.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\12.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\13.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\14.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\15.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\16.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\17.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\18.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\19.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\20.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\21.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\22.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\23.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\24.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\25.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\26.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\28.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\29.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\30.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\31.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\32.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\33.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\34.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\35.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\36.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\37.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\39.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\01_robox\\40.html",
+                "path": "websites\\01\\04.html",
                 "nixitubes": 0,
                 "subsites": []
             }
         ]
     },
     {
-        "path": "websites\\02_time.html",
+        "path": "websites\\02.html",
         "nixitubes": 0,
         "subsites": [
             {
@@ -813,11 +638,15 @@
                 "path": "websites\\02_time\\2004.html",
                 "nixitubes": 2004,
                 "subsites": []
-            }
+            },
+        	{   "path":"websites\\04_archiv\\chaplin_moderntimes.html",
+				"nixitubes":0,
+				"subsites":[]
+			}
         ]
     },
     {
-        "path": "websites\\03_shifz.html",
+        "path": "websites\\03.html",
         "nixitubes": 0,
         "subsites": [
             {
@@ -1003,261 +832,127 @@
         ]
     },
     {
-        "path": "websites\\04_archiv.html",
+        "path": "websites\\04.html",
         "nixitubes": 0,
         "subsites": [
-        	{   "path":"websites\\04_archiv\\chaplin_moderntimes.html",
-				"nixitubes":0,
-				"subsites":[]
-			},
 
             {
-                "path": "websites\\04_archiv\\01.html",
+                "path": "websites\\04\\01.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\02.html",
+                "path": "websites\\04\\02.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\03.html",
+                "path": "websites\\04\\03.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\04.html",
+                "path": "websites\\04\\04.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\04a.html",
+                "path": "websites\\04\\05.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\05.html",
+                "path": "websites\\04\\06.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\06.html",
+                "path": "websites\\04\\07.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\07.html",
+                "path": "websites\\04\\08.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\07a.html",
+                "path": "websites\\04\\09.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\07big.html",
+                "path": "websites\\04\\10.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\08.html",
+                "path": "websites\\04\\11.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\08big.html",
+                "path": "websites\\04\\12.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\09.html",
+                "path": "websites\\04\\13.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\09big.html",
+                "path": "websites\\04\\14.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\10.html",
+                "path": "websites\\04\\15.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\10big.html",
+                "path": "websites\\04\\16.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\11.html",
+                "path": "websites\\04\\17.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\11big.html",
+                "path": "websites\\04\\18.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\12.html",
+                "path": "websites\\04\\19.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\12big.html",
+                "path": "websites\\04\\20.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\13.html",
+                "path": "websites\\04\\21.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\13big.html",
+                "path": "websites\\04\\22.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\14.html",
+                "path": "websites\\04\\23.html",
                 "nixitubes": 0,
                 "subsites": []
             },
             {
-                "path": "websites\\04_archiv\\15.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\16.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\17.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\18.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\19.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\20.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\21.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\22.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\23.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\24.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\25.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\26.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\27.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\28.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\29.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\30.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\31.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\32.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\33.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\34.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\35.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\36.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\37.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\38.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\39.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\40.html",
-                "nixitubes": 0,
-                "subsites": []
-            },
-            {
-                "path": "websites\\04_archiv\\41.html",
+                "path": "websites\\04\\24.html",
                 "nixitubes": 0,
                 "subsites": []
             }
