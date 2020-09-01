@@ -112,15 +112,9 @@ exit 0
 
 Do not forget to save the file.
 
-There will be a profile called 'autostart' script, which is located at ```/home/pi/.config/lxsession/LXDE-pi/autostart```
+There will be a profile called 'autostart' script, which is located at ```/etc/xdg/lxsession/LXDE-pi/autostart```
  In our Rasberry Pi, we had to create this file.
 
-
-Recommended: 
-
-Using other Linux distribution. The location called ```/etc/xdg/lxsession/LXDE-pi/autostart```, which is already included in Raspberry Pi, 
-so you do not have to create a file.
- 
  Adding the Path, where the file is created and edited. 
 ```bash
 nano /etc/xdg/lxsession/LXDE-pi/autostart
